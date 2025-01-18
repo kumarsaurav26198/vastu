@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+body {
+  margin: 0;
+  font-family: "Raleway", serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(to left, rgb(0, 0, 0), rgb(1, 4, 39));
+}
+.custom-bg {
+  background-color: #fff;
+  padding: 4rem 0;
+}
+
+.project-heading {
+  font-size: 3rem; /* Increased heading size */
+  font-weight: bold;
+  color: white; /* White text for better contrast */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.project-heading .yellow {
+  color: #ffc107; /* Yellow color for emphasis */
+}
+
+.project-subheading {
+  font-size: 2.5rem; /* Increased subheading size */
+  font-weight: bold;
+  color: white; /* White text for better contrast */
+  margin-bottom: 1.5rem;
+}
+
+.text-white {
+  color: white; /* White text for better contrast */
+}
+
+.large-text {
+  font-size: 1.25rem; /* Increased paragraph and list text size */
+  line-height: 1.8; /* Improved readability with increased line height */
+}
