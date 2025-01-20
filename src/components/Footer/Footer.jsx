@@ -64,7 +64,7 @@ const Footer = () => {
               </li>
               <li style={{ marginTop: "10px" }}>
                 <Link
-                  to="/project"
+                  to="/about"
                   style={{
                     textDecoration: "none",
                     color: "#333",
@@ -82,6 +82,7 @@ const Footer = () => {
                 >
                   About Us
                 </Link>
+                
               </li>
               <li style={{ marginTop: "10px" }}>
                 <Link
@@ -113,11 +114,11 @@ const Footer = () => {
               Address
             </h5>
             <p style={{ color: "#333", marginBottom: "0" }}>
-              123 Main Street,
+              afcst,
               <br />
-              New York, NY 10001,
+              abce1,
               <br />
-              United States
+             afdd
             </p>
           </Col>
 
@@ -127,7 +128,7 @@ const Footer = () => {
               Contact
             </h5>
             <p style={{ color: "#333", marginBottom: "0" }}>
-              Phone: +1 (123) 456-7890
+              Phone: 9878987
               <br />
               Email: info@example.com
             </p>

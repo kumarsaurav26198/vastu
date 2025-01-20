@@ -3,17 +3,17 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
-import { GrServices } from "react-icons/gr";
+import { useNavigate } from "react-router-dom";
 import VSTRC from "../../pages/VSTRC.png"; // Ensure the path is correct
 import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
   AiOutlineContacts,
 } from "react-icons/ai";
-import { GiSkills } from "react-icons/gi";
-import { CgFileDocument } from "react-icons/cg";
+import { GrServices } from "react-icons/gr";
 
 function NavBar() {
+  const navigate = useNavigate();  // Ensure the useNavigate hook is used properly
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
 
@@ -34,7 +34,15 @@ function NavBar() {
         <img
           src={VSTRC}
           alt="brand"
-          style={{ width: "150px", height: "auto" }} // Adjust size as needed
+          style={{
+            width: "150px",
+            height: "auto",
+            cursor: "pointer",
+            transition: "transform 0.3s ease",
+          }}
+          onClick={() => navigate("/")} // Correctly using the navigate function
+          onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.2)"}
+          onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
         />
       </div>
 
@@ -48,9 +56,7 @@ function NavBar() {
         <Container>
           <Navbar.Toggle
             aria-controls="responsive-navbar-nav"
-            onClick={() => {
-              updateExpanded(!expand);
-            }}
+            onClick={() => updateExpanded(!expand)}
           >
             <span></span>
             <span></span>
@@ -72,14 +78,6 @@ function NavBar() {
                     color: "black",
                     position: "relative",
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "none"; // Orange text color on hover
-                    e.currentTarget.style.borderBottom = "2px solid none"; // Orange underline on hover
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "black"; // Reset text color on leave
-                    e.currentTarget.style.borderBottom = "none"; // Remove underline on leave
-                  }}
                 >
                   <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
                 </Nav.Link>
@@ -87,23 +85,14 @@ function NavBar() {
               <Nav.Item>
                 <Nav.Link
                   as={Link}
-                  to="/project"
+                  to="/about"
                   onClick={() => updateExpanded(false)}
                   style={{
                     textDecoration: "none",
                     color: "black",
                     position: "relative",
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "none"; // Orange text color on hover
-                    e.currentTarget.style.borderBottom = "2px solid none"; // Orange underline on hover
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "black"; // Reset text color on leave
-                    e.currentTarget.style.borderBottom = "none"; // Remove underline on leave
-                  }}
                 >
-                  {/* <GrServices style={{ marginBottom: "2px" }} />  */}
                   <AiOutlineFundProjectionScreen
                     style={{ marginBottom: "2px" }}
                   />{" "}
@@ -120,18 +109,7 @@ function NavBar() {
                     color: "black",
                     position: "relative",
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "none"; // Orange text color on hover
-                    e.currentTarget.style.borderBottom = "2px solid none"; // Orange underline on hover
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "black"; // Reset text color on leave
-                    e.currentTarget.style.borderBottom = "none"; // Remove underline on leave
-                  }}
                 >
-                  {/* <AiOutlineFundProjectionScreen
-                    style={{ marginBottom: "2px" }}
-                  />{" "} */}
                   <GrServices style={{ marginBottom: "2px" }} /> Service
                 </Nav.Link>
               </Nav.Item>
@@ -144,14 +122,6 @@ function NavBar() {
                     textDecoration: "none",
                     color: "black",
                     position: "relative",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "none"; // Orange text color on hover
-                    e.currentTarget.style.borderBottom = "2px solid none"; // Orange underline on hover
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "black"; // Reset text color on leave
-                    e.currentTarget.style.borderBottom = "none"; // Remove underline on leave
                   }}
                 >
                   <AiOutlineContacts style={{ marginBottom: "2px" }} /> Contact

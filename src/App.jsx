@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import {
   BrowserRouter,
   Route,
@@ -9,7 +11,7 @@ import {
 
 import Home from "./pages/Home";
 // import Skill from "./pages/Skillset";
-import Project from "./pages/About";
+import About from "./pages/About";
 import Resume from "./pages/Resume";
 import Contact from "./pages/Contact";
 
@@ -22,6 +24,9 @@ import ScrollToTop from "./components/ScrollToTop";
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Service from "./pages/Service";
+import Homeloan from "./pages/subpages/Homeloan";
+import Vastu from "./pages/subpages/Vastu";
+import Stocks from "./pages/subpages/Stocks";
 
 function App() {
   const [load, upadateLoad] = useState(true);
@@ -44,9 +49,12 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/service" element={<Service />} />
           
-          <Route path="/project" element={<Project />} />
+          <Route path="/about" element={<About/>} />
 
           <Route path="/contact" element={<Contact />} />
+          <Route path="/homeloan" element={<Homeloan />} />
+          <Route path="/vastu" element={<Vastu />} />
+          <Route path="/stocks" element={<Stocks />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />

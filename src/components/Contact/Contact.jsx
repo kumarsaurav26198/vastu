@@ -2,20 +2,45 @@ import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import contact from "../../pages/asse/contactUs.jpg";
-import { FaUser, FaEnvelope, FaComment } from "react-icons/fa"; // Icons for form fields
+import { FaUser, FaEnvelope, FaComment, FaPhone } from "react-icons/fa"; // Icons for form fields
+import axios from "axios"; // Import Axios
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [phone, setPhone] = useState(""); // State for phone number
 
+  // Function to send the form data to the API
   const sendEmail = async (e) => {
     e.preventDefault();
-    const serviceId = "YOUR_SERVICE_ID";
-    const templateId = "YOUR_TEMPLATE_ID";
-    const userId = "YOUR_USER_ID";
 
-    // Add your EmailJS logic here
+    // Prepare the payload to send to your API
+    const payload = {
+      name: name,
+      email: email,
+      phone: phone,
+      message: message,
+    };
+
+    try {
+      // Make an API request using Axios
+      const response = await axios.post("https://your-api-url/Myapiqwerrt", payload);
+      
+      // Handle success
+      console.log("Form submitted successfully:", response.data);
+      alert("Your message has been sent successfully!");
+      
+      // Reset form fields after submission
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+    } catch (error) {
+      // Handle error
+      console.error("Error submitting form:", error);
+      alert("There was an error submitting your message. Please try again.");
+    }
   };
 
   return (
@@ -54,7 +79,7 @@ const Contact = () => {
         {/* Left Column */}
         <Col
           md={5}
-          className="mb-4 mb-md-0" // Add margin-bottom on small screens
+          className="mb-4 mb-md-0"
           style={{
             textAlign: "left",
             padding: "40px",
@@ -149,6 +174,48 @@ const Contact = () => {
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "12px 12px 12px 40px", // Add padding for the icon
+                  border: "1px solid #ddd",
+                  borderRadius: "5px",
+                  fontSize: "16px",
+                  backgroundColor: "white",
+                  color: "#343a40",
+                  outline: "none",
+                  transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = "#007bff";
+                  e.currentTarget.style.boxShadow = "0 0 8px rgba(0, 123, 255, 0.5)";
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = "#ddd";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              />
+            </div>
+
+            {/* Phone Number Field */}
+            <div style={{ position: "relative" }}>
+              <FaPhone
+                style={{
+                  position: "absolute",
+                  left: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  color: "#6c757d",
+                }}
+              />
+              <input
+                type="text"
+                name="phone"
+                placeholder="10-digit phone number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                maxLength="10" // Limit input to 10 digits
+                pattern="\d{10}" // Allow only numbers
+                required
                 style={{
                   width: "100%",
                   padding: "12px 12px 12px 40px", // Add padding for the icon

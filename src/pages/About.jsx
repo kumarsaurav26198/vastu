@@ -6,6 +6,8 @@ import homecal from "./asse/Homecalimage.jpg";
 import finance from "./asse/finance.jpg";
 import certifiedVastu from "./asse/certifiedVastu.jpg";
 import growth from "./asse/growth.jpg";
+import vision from "./asse/vision.jpg";
+import mission from "./asse/mission.jpg";
 
 function About() {
   return (
@@ -14,11 +16,11 @@ function About() {
         <Particle />
         <Container fluid className="px-4">
           {/* About Us Section */}
-          <Row className="mx-0 mb-5 g-0">
+          <Row className="mx-0 mb-5 g-0" style={{ minHeight: "500px" }}> {/* Increased height */}
             {/* First Column - About Us Content */}
             <Col
               xs={12}
-              md={8} // Increased width for text column
+              md={8}
               className="px-4 text-center bg-white p-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
@@ -40,11 +42,11 @@ function About() {
             {/* Second Column - Image */}
             <Col
               xs={12}
-              md={4} // Reduced width for image column
+              md={4}
               className="d-flex align-items-center justify-content-center bg-white p-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
-              <div className="ratio ratio-1x1 w-75"> {/* Reduced width of the image container */}
+              <div className="ratio ratio-1x1 w-75">
                 <img
                   src={homecal}
                   alt="About Us"
@@ -56,15 +58,15 @@ function About() {
           </Row>
 
           {/* Our Expertise Section */}
-          <Row className="mx-0 mb-5 g-0">
+          <Row className="mx-0 mb-5 g-0" style={{ minHeight: "500px" }}> {/* Increased height */}
             {/* First Column - Image */}
             <Col
               xs={12}
-              md={4} // Reduced width for image column
+              md={4}
               className="d-flex align-items-center justify-content-center bg-white p-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
-              <div className="ratio ratio-1x1 w-75"> {/* Reduced width of the image container */}
+              <div className="ratio ratio-1x1 w-75">
                 <img
                   src={finance}
                   alt="Our Expertise"
@@ -77,7 +79,7 @@ function About() {
             {/* Second Column - Our Expertise Content */}
             <Col
               xs={12}
-              md={8} // Increased width for text column
+              md={8}
               className="px-4 bg-white p-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
@@ -103,12 +105,12 @@ function About() {
           </Row>
 
           {/* Beyond Finance Section */}
-          <Row className="mx-0 mb-5">
+          <Row className="mx-0 mb-5 g-0" style={{ minHeight: "500px" }}> {/* Increased height */}
             {/* First Column - Beyond Finance Content */}
             <Col
               xs={12}
-              md={8} // Increased width for text column
-              className="px-4 bg-white rounded shadow-sm p-4 d-flex align-items-center justify-content-center"
+              md={8}
+              className="px-4 bg-white p-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div>
@@ -131,11 +133,11 @@ function About() {
             {/* Second Column - Image */}
             <Col
               xs={12}
-              md={4} // Reduced width for image column
+              md={4}
               className="d-flex align-items-center justify-content-center bg-white p-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
-              <div className="ratio ratio-1x1 w-75"> {/* Reduced width of the image container */}
+              <div className="ratio ratio-1x1 w-75">
                 <img
                   src={certifiedVastu}
                   alt="Beyond Finance"
@@ -147,15 +149,15 @@ function About() {
           </Row>
 
           {/* Commitment to Growth Section */}
-          <Row className="mx-0 mb-5">
+          <Row className="mx-0 mb-5 g-0" style={{ minHeight: "500px" }}> {/* Increased height */}
             {/* First Column - Image */}
             <Col
               xs={12}
-              md={4} // Reduced width for image column
+              md={4}
               className="d-flex align-items-center justify-content-center bg-white p-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
-              <div className="ratio ratio-1x1 w-75"> {/* Reduced width of the image container */}
+              <div className="ratio ratio-1x1 w-75">
                 <img
                   src={growth}
                   alt="Commitment to Growth"
@@ -168,8 +170,8 @@ function About() {
             {/* Second Column - Commitment to Growth Content */}
             <Col
               xs={12}
-              md={8} // Increased width for text column
-              className="px-4 bg-white rounded shadow-sm p-4 d-flex align-items-center justify-content-center"
+              md={8}
+              className="px-4 bg-white p-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div>
@@ -192,115 +194,107 @@ function About() {
           </Row>
 
           {/* Why Choose Us Section */}
-          <Row className="mx-0 mb-5">
-            <Col
-              className="px-4 bg-white rounded shadow-sm p-4"
-              style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
-            >
-              <h2 className="project-subheading text-black text-center">
-                Why Choose Us?
-              </h2>
-              <ul className="text-black large-text">
-                <li>
-                  Over <strong>14 years of experience</strong> in financial
-                  solutions
-                </li>
-                <li>
-                  Expertise in <strong>mortgage lending products</strong> and{" "}
-                  <strong>stock market analysis</strong>
-                </li>
-                <li>
-                  Certified <strong>Vastu consultant</strong> for integrated
-                  living solutions
-                </li>
-                <li>
-                  Personalized services with a{" "}
-                  <strong>client-centric approach</strong>
-                </li>
-                <li>
-                  A <strong>holistic philosophy</strong> that blends traditional
-                  wisdom with modern techniques
-                </li>
-              </ul>
-              <p className="text-black large-text">
-                At <strong>Vivek Singh – The Real Consultant</strong>, our goal
-                is to empower you to achieve financial success and personal
-                well-being. Whether you seek expert advice on loans, investment
-                strategies, or holistic living, we’re here to guide you every
-                step of the way.
-              </p>
-              <p className="text-black large-text">
-                <strong>Let’s embark on this journey together!</strong>
-              </p>
-            </Col>
-          </Row>
-
+           
           {/* Our Vision Section */}
-          <Row className="mx-0 mb-5">
+          <Row className="mx-0 mb-5" style={{ minHeight: "500px" }}> {/* Increased height */}
             <Col
-              className="px-4 bg-white rounded shadow-sm p-4"
+              className="px-4 bg-white p-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
-              <h2 className="project-subheading text-black text-center">
-                Our Vision
-              </h2>
-              <p className="text-black large-text">
-                At <strong>Vivek Singh – The Real Consultant</strong>, our
-                vision is to be a globally recognized leader in providing
-                comprehensive financial solutions, personalized trading
-                strategies, and holistic living consultancy. We aim to empower
-                individuals and businesses to achieve financial stability,
-                spiritual harmony, and sustainable growth through innovative,
-                client-centric approaches and a commitment to lifelong learning.
-              </p>
+              <div>
+                <h2 className="project-subheading text-black text-center">
+                  Our Vision
+                </h2>
+                <p className="text-black large-text">
+                  At <strong>Vivek Singh – The Real Consultant</strong>, our
+                  vision is to be a globally recognized leader in providing
+                  comprehensive financial solutions, personalized trading
+                  strategies, and holistic living consultancy. We aim to empower
+                  individuals and businesses to achieve financial stability,
+                  spiritual harmony, and sustainable growth through innovative,
+                  client-centric approaches and a commitment to lifelong learning.
+                </p>
+              </div>
+            </Col>
+            <Col
+              xs={12}
+              md={4}
+              className="d-flex align-items-center justify-content-center bg-white p-4"
+              style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
+            >
+              <div className="ratio ratio-1x1 w-75">
+                <img
+                  src={vision}
+                  alt="About Us"
+                  className="img-fluid rounded"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
             </Col>
           </Row>
 
           {/* Our Mission Section */}
-          <Row className="mx-0 mb-5">
-            <Col
-              className="px-4 bg-white rounded shadow-sm p-4"
+          <Row className="mx-0 mb-5" style={{ minHeight: "500px" }}> 
+          <Col
+              xs={12}
+              md={4}
+              className="d-flex align-items-center justify-content-center bg-white p-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
-              <h2 className="project-subheading text-black text-center">
-                Our Mission
-              </h2>
-              <p className="text-black large-text">
-                Our mission is to deliver exceptional services in mortgage
-                lending, financial strategy, and holistic consulting by
-                combining expertise, integrity, and innovation. We strive to:
-              </p>
-              <ol className="text-black large-text">
-                <li>
-                  <strong>Empower Financial Success:</strong> Provide tailored
-                  solutions for home loans, loans against property, and other
-                  financial products to help clients achieve their financial
-                  goals.
-                </li>
-                <li>
-                  <strong>Simplify Stock Market Navigation:</strong> Offer
-                  personalized trading strategies backed by technical expertise
-                  to ensure informed investment decisions.
-                </li>
-                <li>
-                  <strong>Promote Holistic Well-Being:</strong> Integrate
-                  ancient wisdom, such as Vastu consultancy and esoteric
-                  practices, with modern methodologies to create balanced and
-                  prosperous living and working environments.
-                </li>
-                <li>
-                  <strong>Foster Lifelong Growth:</strong> Encourage continuous
-                  learning and personal development through spiritual practices
-                  and expanding knowledge in astrology, numerology, Reiki, and
-                  more.
-                </li>
-                <li>
-                  <strong>Build Lasting Relationships:</strong> Uphold a
-                  client-first philosophy by delivering customized,
-                  result-oriented solutions that align with individual needs and
-                  aspirations.
-                </li>
-              </ol>
+              <div className="ratio ratio-1x1 w-75">
+                <img
+                  src={mission}
+                  alt="Our Expertise"
+                  className="img-fluid rounded"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+            </Col>
+            <Col
+              className="px-4 bg-white p-4 d-flex align-items-center justify-content-center"
+              style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
+            >
+              <div>
+                <h2 className="project-subheading text-black text-center">
+                  Our Mission
+                </h2>
+                <p className="text-black large-text">
+                  Our mission is to deliver exceptional services in mortgage
+                  lending, financial strategy, and holistic consulting by
+                  combining expertise, integrity, and innovation. We strive to:
+                </p>
+                <ol className="text-black large-text">
+                  <li>
+                    <strong>Empower Financial Success:</strong> Provide tailored
+                    solutions for home loans, loans against property, and other
+                    financial products to help clients achieve their financial
+                    goals.
+                  </li>
+                  <li>
+                    <strong>Simplify Stock Market Navigation:</strong> Offer
+                    personalized trading strategies backed by technical expertise
+                    to ensure informed investment decisions.
+                  </li>
+                  <li>
+                    <strong>Promote Holistic Well-Being:</strong> Integrate
+                    ancient wisdom, such as Vastu consultancy and esoteric
+                    practices, with modern methodologies to create balanced and
+                    prosperous living and working environments.
+                  </li>
+                  <li>
+                    <strong>Foster Lifelong Growth:</strong> Encourage continuous
+                    learning and personal development through spiritual practices
+                    and expanding knowledge in astrology, numerology, Reiki, and
+                    more.
+                  </li>
+                  <li>
+                    <strong>Build Lasting Relationships:</strong> Uphold a
+                    client-first philosophy by delivering customized,
+                    result-oriented solutions that align with individual needs and
+                    aspirations.
+                  </li>
+                </ol>
+              </div>
             </Col>
           </Row>
         </Container>

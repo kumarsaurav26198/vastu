@@ -811,3 +811,64 @@ Navbar {
 }
 
 
+
+/* home page image */
+/* HomeBackground.css */
+.background-container {
+  position: fixed; /* Fixed position to cover the entire viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+  z-index: -1; /* Ensure it stays in the background */
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Start with transparent images */
+  animation: slide 9s infinite; /* 9s total animation time (3 images * 3s each) */
+  object-fit: cover; /* Ensure images cover the container */
+}
+
+/* Keyframes for the sliding animation */
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+/* Delay each image's animation */
+.background-image:nth-child(1) {
+  animation-delay: 0s; /* First image starts immediately */
+}
+
+.background-image:nth-child(2) {
+  animation-delay: 3s; /* Second image starts after 3 seconds */
+}
+
+.background-image:nth-child(3) {
+  animation-delay: 6s; /* Third image starts after 6 seconds */
+}
+
