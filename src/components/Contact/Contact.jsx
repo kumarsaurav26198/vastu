@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import contact from "../../pages/asse/contactUs.jpg";
+import { FaUser, FaEnvelope, FaComment } from "react-icons/fa"; // Icons for form fields
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -9,35 +11,57 @@ const Contact = () => {
 
   const sendEmail = async (e) => {
     e.preventDefault();
-    const serviceId = "YOUR_SERVICE_ID"; // Replace with your EmailJS service ID
-    const templateId = "YOUR_TEMPLATE_ID"; // Replace with your EmailJS template ID
-    const userId = "YOUR_USER_ID"; // Replace with your EmailJS user ID
+    const serviceId = "YOUR_SERVICE_ID";
+    const templateId = "YOUR_TEMPLATE_ID";
+    const userId = "YOUR_USER_ID";
 
     // Add your EmailJS logic here
   };
 
   return (
     <Container
-      fluid // Make the container fluid for full-width responsiveness
+      fluid
       style={{
         padding: "80px 20px",
-        backgroundColor: "#f8f9fa", // Light gray background
-        minHeight: "100vh", // Ensure the container takes at least 100% of the viewport height
+        minHeight: "100vh",
         display: "flex",
-        alignItems: "center", // Vertically center the content
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundImage: `url(${contact})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        position: "relative",
       }}
     >
-      <Row className="justify-content-center w-100">
+      {/* Overlay with transparency */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+          zIndex: 1,
+        }}
+      ></div>
+
+      {/* Content */}
+      <Row
+        className="justify-content-center w-100"
+        style={{ position: "relative", zIndex: 2 }}
+      >
         {/* Left Column */}
         <Col
           md={5}
+          className="mb-4 mb-md-0" // Add margin-bottom on small screens
           style={{
             textAlign: "left",
             padding: "40px",
             backgroundColor: "white",
             borderRadius: "10px",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow
-            marginRight: "20px", // Add spacing between columns
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            marginRight: "20px",
           }}
         >
           <h1 style={{ fontSize: "2.5rem", color: "#343a40", marginBottom: "20px" }}>
@@ -58,7 +82,7 @@ const Contact = () => {
             backgroundColor: "white",
             padding: "40px",
             borderRadius: "10px",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           }}
         >
           <form
@@ -66,82 +90,127 @@ const Contact = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "20px", // Space between form elements
+              gap: "20px",
             }}
           >
-            <input
-              type="text"
-              name="from_name"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "12px",
-                border: "1px solid #ddd",
-                borderRadius: "5px",
-                fontSize: "16px",
-                backgroundColor: "white",
-                color: "#343a40",
-                outline: "none",
-                transition: "border-color 0.3s ease",
-              }}
-              onFocus={(e) => {
-                e.currentTarget.style.borderColor = "#007bff"; // Highlight border on focus
-              }}
-              onBlur={(e) => {
-                e.currentTarget.style.borderColor = "#ddd"; // Reset border on blur
-              }}
-            />
-            <input
-              type="email"
-              name="reply_to"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "12px",
-                border: "1px solid #ddd",
-                borderRadius: "5px",
-                fontSize: "16px",
-                backgroundColor: "white",
-                color: "#343a40",
-                outline: "none",
-                transition: "border-color 0.3s ease",
-              }}
-              onFocus={(e) => {
-                e.currentTarget.style.borderColor = "#007bff"; // Highlight border on focus
-              }}
-              onBlur={(e) => {
-                e.currentTarget.style.borderColor = "#ddd"; // Reset border on blur
-              }}
-            />
-            <textarea
-              name="message"
-              placeholder="Message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "12px",
-                border: "1px solid #ddd",
-                borderRadius: "5px",
-                fontSize: "16px",
-                backgroundColor: "white",
-                color: "#343a40",
-                resize: "vertical", // Allow vertical resizing
-                minHeight: "150px", // Minimum height for textarea
-                outline: "none",
-                transition: "border-color 0.3s ease",
-              }}
-              onFocus={(e) => {
-                e.currentTarget.style.borderColor = "#007bff"; // Highlight border on focus
-              }}
-              onBlur={(e) => {
-                e.currentTarget.style.borderColor = "#ddd"; // Reset border on blur
-              }}
-            />
+            {/* Name Field */}
+            <div style={{ position: "relative" }}>
+              <FaUser
+                style={{
+                  position: "absolute",
+                  left: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  color: "#6c757d",
+                }}
+              />
+              <input
+                type="text"
+                name="from_name"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "12px 12px 12px 40px", // Add padding for the icon
+                  border: "1px solid #ddd",
+                  borderRadius: "5px",
+                  fontSize: "16px",
+                  backgroundColor: "white",
+                  color: "#343a40",
+                  outline: "none",
+                  transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = "#007bff";
+                  e.currentTarget.style.boxShadow = "0 0 8px rgba(0, 123, 255, 0.5)";
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = "#ddd";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              />
+            </div>
+
+            {/* Email Field */}
+            <div style={{ position: "relative" }}>
+              <FaEnvelope
+                style={{
+                  position: "absolute",
+                  left: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  color: "#6c757d",
+                }}
+              />
+              <input
+                type="email"
+                name="reply_to"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "12px 12px 12px 40px", // Add padding for the icon
+                  border: "1px solid #ddd",
+                  borderRadius: "5px",
+                  fontSize: "16px",
+                  backgroundColor: "white",
+                  color: "#343a40",
+                  outline: "none",
+                  transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = "#007bff";
+                  e.currentTarget.style.boxShadow = "0 0 8px rgba(0, 123, 255, 0.5)";
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = "#ddd";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              />
+            </div>
+
+            {/* Message Field */}
+            <div style={{ position: "relative" }}>
+              <FaComment
+                style={{
+                  position: "absolute",
+                  left: "12px",
+                  top: "20px",
+                  color: "#6c757d",
+                }}
+              />
+              <textarea
+                name="message"
+                placeholder="Message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "12px 12px 12px 40px", // Add padding for the icon
+                  border: "1px solid #ddd",
+                  borderRadius: "5px",
+                  fontSize: "16px",
+                  backgroundColor: "white",
+                  color: "#343a40",
+                  resize: "vertical",
+                  minHeight: "150px",
+                  outline: "none",
+                  transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = "#007bff";
+                  e.currentTarget.style.boxShadow = "0 0 8px rgba(0, 123, 255, 0.5)";
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = "#ddd";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              />
+            </div>
+
+            {/* Submit Button */}
             <Button
               type="submit"
               style={{
@@ -152,16 +221,16 @@ const Contact = () => {
                 borderRadius: "5px",
                 fontSize: "16px",
                 cursor: "pointer",
-                width: "100%", // Full-width button
+                width: "100%",
                 transition: "background-color 0.3s ease, transform 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#0056b3"; // Darker blue on hover
-                e.currentTarget.style.transform = "translateY(-2px)"; // Slight lift on hover
+                e.currentTarget.style.backgroundColor = "#0056b3";
+                e.currentTarget.style.transform = "translateY(-2px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#007bff"; // Reset color on leave
-                e.currentTarget.style.transform = "translateY(0)"; // Reset position on leave
+                e.currentTarget.style.backgroundColor = "#007bff";
+                e.currentTarget.style.transform = "translateY(0)";
               }}
             >
               Send

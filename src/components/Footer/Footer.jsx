@@ -16,7 +16,9 @@ const Footer = () => {
         <Row>
           {/* Quick Links */}
           <Col md={4} className="mb-4">
-            <h5 style={{ fontWeight: "bold", marginBottom: "20px" }}>Quick Links</h5>
+            <h5 style={{ fontWeight: "bold", marginBottom: "20px" }}>
+              Quick Links
+            </h5>
             <ul style={{ listStyle: "none", paddingLeft: "0" }}>
               <li style={{ marginTop: "10px" }}>
                 <Link
@@ -28,7 +30,7 @@ const Footer = () => {
                     cursor: "pointer", // Change cursor to pointer
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#ff8c42"; // Orange color on hover
+                    e.currentTarget.style.color = "none"; // Orange color on hover
                     e.currentTarget.style.textDecoration = "underline"; // Underline on hover
                   }}
                   onMouseLeave={(e) => {
@@ -49,7 +51,7 @@ const Footer = () => {
                     cursor: "pointer", // Change cursor to pointer
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#ff8c42"; // Orange color on hover
+                    e.currentTarget.style.color = "none"; // Orange color on hover
                     e.currentTarget.style.textDecoration = "underline"; // Underline on hover
                   }}
                   onMouseLeave={(e) => {
@@ -70,7 +72,7 @@ const Footer = () => {
                     cursor: "pointer", // Change cursor to pointer
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#ff8c42"; // Orange color on hover
+                    e.currentTarget.style.color = "none"; // Orange color on hover
                     e.currentTarget.style.textDecoration = "underline"; // Underline on hover
                   }}
                   onMouseLeave={(e) => {
@@ -91,7 +93,7 @@ const Footer = () => {
                     cursor: "pointer", // Change cursor to pointer
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#ff8c42"; // Orange color on hover
+                    e.currentTarget.style.color = "none"; // Orange color on hover
                     e.currentTarget.style.textDecoration = "underline"; // Underline on hover
                   }}
                   onMouseLeave={(e) => {
@@ -107,7 +109,9 @@ const Footer = () => {
 
           {/* Address */}
           <Col md={4} className="mb-4">
-            <h5 style={{ fontWeight: "bold", marginBottom: "20px" }}>Address</h5>
+            <h5 style={{ fontWeight: "bold", marginBottom: "20px" }}>
+              Address
+            </h5>
             <p style={{ color: "#333", marginBottom: "0" }}>
               123 Main Street,
               <br />
@@ -119,7 +123,9 @@ const Footer = () => {
 
           {/* Contact */}
           <Col md={4} className="mb-4">
-            <h5 style={{ fontWeight: "bold", marginBottom: "20px" }}>Contact</h5>
+            <h5 style={{ fontWeight: "bold", marginBottom: "20px" }}>
+              Contact
+            </h5>
             <p style={{ color: "#333", marginBottom: "0" }}>
               Phone: +1 (123) 456-7890
               <br />
@@ -132,7 +138,8 @@ const Footer = () => {
         <Row>
           <Col className="text-center mt-4">
             <p style={{ color: "#666", marginBottom: "0" }}>
-              &copy; {new Date().getFullYear()} Your Company. All Rights Reserved.
+              &copy; {new Date().getFullYear()} Your Company. All Rights
+              Reserved.
             </p>
           </Col>
         </Row>

@@ -57,7 +57,11 @@ function NavBar() {
             <span></span>
           </Navbar.Toggle>
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="ms-auto" style={{marginTop:"30px"}} defaultActiveKey="#home">
+            <Nav
+              className="ms-auto"
+              style={{ marginTop: "30px" }}
+              defaultActiveKey="#home"
+            >
               <Nav.Item>
                 <Nav.Link
                   as={Link}
@@ -69,8 +73,8 @@ function NavBar() {
                     position: "relative",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#ff8c42"; // Orange text color on hover
-                    e.currentTarget.style.borderBottom = "2px solid #ff8c42"; // Orange underline on hover
+                    e.currentTarget.style.color = "none"; // Orange text color on hover
+                    e.currentTarget.style.borderBottom = "2px solid none"; // Orange underline on hover
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.color = "black"; // Reset text color on leave
@@ -78,28 +82,6 @@ function NavBar() {
                   }}
                 >
                   <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link
-                  as={Link}
-                  to="/service"
-                  onClick={() => updateExpanded(false)}
-                  style={{
-                    textDecoration: "none",
-                    color: "black",
-                    position: "relative",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#ff8c42"; // Orange text color on hover
-                    e.currentTarget.style.borderBottom = "2px solid #ff8c42"; // Orange underline on hover
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "black"; // Reset text color on leave
-                    e.currentTarget.style.borderBottom = "none"; // Remove underline on leave
-                  }}
-                >
-                  <GrServices style={{ marginBottom: "2px" }} /> Service
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
@@ -113,18 +95,44 @@ function NavBar() {
                     position: "relative",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#ff8c42"; // Orange text color on hover
-                    e.currentTarget.style.borderBottom = "2px solid #ff8c42"; // Orange underline on hover
+                    e.currentTarget.style.color = "none"; // Orange text color on hover
+                    e.currentTarget.style.borderBottom = "2px solid none"; // Orange underline on hover
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.color = "black"; // Reset text color on leave
                     e.currentTarget.style.borderBottom = "none"; // Remove underline on leave
                   }}
                 >
+                  {/* <GrServices style={{ marginBottom: "2px" }} />  */}
                   <AiOutlineFundProjectionScreen
                     style={{ marginBottom: "2px" }}
                   />{" "}
                   About Us
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link
+                  as={Link}
+                  to="/service"
+                  onClick={() => updateExpanded(false)}
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    position: "relative",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "none"; // Orange text color on hover
+                    e.currentTarget.style.borderBottom = "2px solid none"; // Orange underline on hover
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "black"; // Reset text color on leave
+                    e.currentTarget.style.borderBottom = "none"; // Remove underline on leave
+                  }}
+                >
+                  {/* <AiOutlineFundProjectionScreen
+                    style={{ marginBottom: "2px" }}
+                  />{" "} */}
+                  <GrServices style={{ marginBottom: "2px" }} /> Service
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
@@ -138,15 +146,16 @@ function NavBar() {
                     position: "relative",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#ff8c42"; // Orange text color on hover
-                    e.currentTarget.style.borderBottom = "2px solid #ff8c42"; // Orange underline on hover
+                    e.currentTarget.style.color = "none"; // Orange text color on hover
+                    e.currentTarget.style.borderBottom = "2px solid none"; // Orange underline on hover
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.color = "black"; // Reset text color on leave
                     e.currentTarget.style.borderBottom = "none"; // Remove underline on leave
                   }}
                 >
-                  <AiOutlineContacts style={{ marginBottom: "2px" }} /> Contact Us
+                  <AiOutlineContacts style={{ marginBottom: "2px" }} /> Contact
+                  Us
                 </Nav.Link>
               </Nav.Item>
             </Nav>
