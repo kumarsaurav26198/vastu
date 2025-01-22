@@ -6,10 +6,11 @@ const Footer = () => {
   return (
     <footer
       style={{
-        backgroundColor: "white",
+        backgroundColor: "#047478", // Updated background color
         padding: "40px 0",
         borderTop: "1px solid #e9ecef",
         marginTop: "auto", // Push footer to the bottom if needed
+        color: "#fff", // Set text color to white for better contrast
       }}
     >
       <Container>
@@ -25,16 +26,16 @@ const Footer = () => {
                   to="/"
                   style={{
                     textDecoration: "none",
-                    color: "#333",
+                    color: "#fff", // White text color
                     transition: "color 0.3s ease, text-decoration 0.3s ease",
                     cursor: "pointer", // Change cursor to pointer
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "none"; // Orange color on hover
+                    e.currentTarget.style.color = "#ffcc00"; // Yellow color on hover
                     e.currentTarget.style.textDecoration = "underline"; // Underline on hover
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#333"; // Reset color on leave
+                    e.currentTarget.style.color = "#fff"; // Reset color on leave
                     e.currentTarget.style.textDecoration = "none"; // Remove underline on leave
                   }}
                 >
@@ -46,16 +47,16 @@ const Footer = () => {
                   to="/service"
                   style={{
                     textDecoration: "none",
-                    color: "#333",
+                    color: "#fff", // White text color
                     transition: "color 0.3s ease, text-decoration 0.3s ease",
                     cursor: "pointer", // Change cursor to pointer
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "none"; // Orange color on hover
+                    e.currentTarget.style.color = "#ffcc00"; // Yellow color on hover
                     e.currentTarget.style.textDecoration = "underline"; // Underline on hover
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#333"; // Reset color on leave
+                    e.currentTarget.style.color = "#fff"; // Reset color on leave
                     e.currentTarget.style.textDecoration = "none"; // Remove underline on leave
                   }}
                 >
@@ -67,38 +68,37 @@ const Footer = () => {
                   to="/about"
                   style={{
                     textDecoration: "none",
-                    color: "#333",
+                    color: "#fff", // White text color
                     transition: "color 0.3s ease, text-decoration 0.3s ease",
                     cursor: "pointer", // Change cursor to pointer
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "none"; // Orange color on hover
+                    e.currentTarget.style.color = "#ffcc00"; // Yellow color on hover
                     e.currentTarget.style.textDecoration = "underline"; // Underline on hover
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#333"; // Reset color on leave
+                    e.currentTarget.style.color = "#fff"; // Reset color on leave
                     e.currentTarget.style.textDecoration = "none"; // Remove underline on leave
                   }}
                 >
                   About Us
                 </Link>
-                
               </li>
               <li style={{ marginTop: "10px" }}>
                 <Link
                   to="/contact"
                   style={{
                     textDecoration: "none",
-                    color: "#333",
+                    color: "#fff", // White text color
                     transition: "color 0.3s ease, text-decoration 0.3s ease",
                     cursor: "pointer", // Change cursor to pointer
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "none"; // Orange color on hover
+                    e.currentTarget.style.color = "#ffcc00"; // Yellow color on hover
                     e.currentTarget.style.textDecoration = "underline"; // Underline on hover
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#333"; // Reset color on leave
+                    e.currentTarget.style.color = "#fff"; // Reset color on leave
                     e.currentTarget.style.textDecoration = "none"; // Remove underline on leave
                   }}
                 >
@@ -113,12 +113,12 @@ const Footer = () => {
             <h5 style={{ fontWeight: "bold", marginBottom: "20px" }}>
               Address
             </h5>
-            <p style={{ color: "#333", marginBottom: "0" }}>
+            <p style={{ color: "#fff", marginBottom: "0" }}> {/* White text color */}
               afcst,
               <br />
               abce1,
               <br />
-             afdd
+              afdd
             </p>
           </Col>
 
@@ -127,7 +127,7 @@ const Footer = () => {
             <h5 style={{ fontWeight: "bold", marginBottom: "20px" }}>
               Contact
             </h5>
-            <p style={{ color: "#333", marginBottom: "0" }}>
+            <p style={{ color: "#fff", marginBottom: "0" }}> {/* White text color */}
               Phone: 9878987
               <br />
               Email: info@example.com
@@ -138,9 +138,11 @@ const Footer = () => {
         {/* Copyright */}
         <Row>
           <Col className="text-center mt-4">
-            <p style={{ color: "#666", marginBottom: "0" }}>
-              &copy; {new Date().getFullYear()} Your Company. All Rights
-              Reserved.
+            <p style={{ color: "#fff", marginBottom: "0" }}> {/* White text color */}
+              &copy; {new Date().getFullYear()} VSTRC. All Rights Reserved.
+             
+            </p>
+            <p style={{ color: "#fff", marginBottom: "0" }}> Developed by ARV MULTIMEDIA
             </p>
           </Col>
         </Row>

@@ -11,17 +11,16 @@ import mission from "./asse/mission.jpg";
 
 function About() {
   return (
-    <Container fluid className="project-section p-4">
+    <Container fluid className="project-section p-2 p-md-4">
       <Container fluid className="custom-bg p-0">
         <Particle />
-        <Container fluid className="px-4">
+        <Container fluid className="px-2 px-md-4">
           {/* About Us Section */}
-          <Row className="mx-0 mb-5 g-0" style={{ minHeight: "500px" }}> {/* Increased height */}
-            {/* First Column - About Us Content */}
+          <Row className="mx-0 mb-4 mb-md-5 g-0" style={{ minHeight: "auto" }}>
             <Col
               xs={12}
               md={8}
-              className="px-4 text-center bg-white p-4 d-flex align-items-center justify-content-center"
+              className="px-2 px-md-4 text-center bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div>
@@ -31,19 +30,17 @@ function About() {
                 <p className="text-black large-text">
                   Welcome to <strong>Vivek Singh – The Real Consultant</strong>,
                   where expertise meets passion and innovation drives exceptional
-                  outcomes. Led by Vivek Singh, a seasoned professional with over{" "}
-                  <strong>14 years of experience</strong> in mortgage lending
-                  products, our mission is to provide you with tailored financial
-                  solutions that meet your unique needs.
+                  outcomes. Led by Vivek Singh, a seasoned professional with
+                  over <strong>14 years of experience</strong> in mortgage
+                  lending products, our mission is to provide you with tailored
+                  financial solutions that meet your unique needs.
                 </p>
               </div>
             </Col>
-
-            {/* Second Column - Image */}
             <Col
               xs={12}
               md={4}
-              className="d-flex align-items-center justify-content-center bg-white p-4"
+              className="d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div className="ratio ratio-1x1 w-75">
@@ -58,12 +55,11 @@ function About() {
           </Row>
 
           {/* Our Expertise Section */}
-          <Row className="mx-0 mb-5 g-0" style={{ minHeight: "500px" }}> {/* Increased height */}
-            {/* First Column - Image */}
+          <Row className="mx-0 mb-4 mb-md-5 g-0" style={{ minHeight: "auto" }}>
             <Col
               xs={12}
               md={4}
-              className="d-flex align-items-center justify-content-center bg-white p-4"
+              className="order-md-1 d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div className="ratio ratio-1x1 w-75">
@@ -75,12 +71,10 @@ function About() {
                 />
               </div>
             </Col>
-
-            {/* Second Column - Our Expertise Content */}
             <Col
               xs={12}
               md={8}
-              className="px-4 bg-white p-4 d-flex align-items-center justify-content-center"
+              className="order-md-2 px-2 px-md-4 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div>
@@ -91,26 +85,25 @@ function About() {
                   With specialization in <strong>home loans</strong>,{" "}
                   <strong>loans against property</strong>, and a range of other
                   loan products, Vivek Singh combines industry knowledge with a
-                  client-first approach to ensure seamless and efficient financial
-                  services. His academic achievements, including a{" "}
+                  client-first approach to ensure seamless and efficient
+                  financial services. His academic achievements, including a{" "}
                   <strong>Bachelor’s degree in Commerce</strong>, a{" "}
                   <strong>
                     Post Graduate Diploma in Computer Applications (PGDCA)
                   </strong>
-                  , and an <strong>MBA in Marketing and Finance</strong>, form the
-                  foundation of his expertise.
+                  , and an <strong>MBA in Marketing and Finance</strong>, form
+                  the foundation of his expertise.
                 </p>
               </div>
             </Col>
           </Row>
 
           {/* Beyond Finance Section */}
-          <Row className="mx-0 mb-5 g-0" style={{ minHeight: "500px" }}> {/* Increased height */}
-            {/* First Column - Beyond Finance Content */}
+          <Row className="mx-0 mb-4 mb-md-5 g-0" style={{ minHeight: "auto" }}>
             <Col
               xs={12}
               md={8}
-              className="px-4 bg-white p-4 d-flex align-items-center justify-content-center"
+              className="px-2 px-md-4 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div>
@@ -120,21 +113,20 @@ function About() {
                 <p className="text-black large-text">
                   Vivek’s credentials extend beyond the financial realm. As a{" "}
                   <strong>certified Vastu consultant</strong>, trained by the
-                  esteemed <strong>All India Institute of Occult Sciences</strong>
-                  , he integrates ancient wisdom into modern living. Additionally,
-                  as a <strong>certified technical analyst</strong> from the{" "}
+                  esteemed{" "}
+                  <strong>All India Institute of Occult Sciences</strong>, he
+                  integrates ancient wisdom into modern living. Additionally, as
+                  a <strong>certified technical analyst</strong> from the{" "}
                   <strong>NSE Academy</strong>, Vivek empowers clients with
                   personalized stock market trading strategies, enabling them to
                   navigate and succeed in a dynamic market environment.
                 </p>
               </div>
             </Col>
-
-            {/* Second Column - Image */}
             <Col
               xs={12}
               md={4}
-              className="d-flex align-items-center justify-content-center bg-white p-4"
+              className="d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div className="ratio ratio-1x1 w-75">
@@ -149,12 +141,11 @@ function About() {
           </Row>
 
           {/* Commitment to Growth Section */}
-          <Row className="mx-0 mb-5 g-0" style={{ minHeight: "500px" }}> {/* Increased height */}
-            {/* First Column - Image */}
+          <Row className="mx-0 mb-4 mb-md-5 g-0" style={{ minHeight: "auto" }}>
             <Col
               xs={12}
               md={4}
-              className="d-flex align-items-center justify-content-center bg-white p-4"
+              className="order-md-1 d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div className="ratio ratio-1x1 w-75">
@@ -166,12 +157,10 @@ function About() {
                 />
               </div>
             </Col>
-
-            {/* Second Column - Commitment to Growth Content */}
             <Col
               xs={12}
               md={8}
-              className="px-4 bg-white p-4 d-flex align-items-center justify-content-center"
+              className="order-md-2 px-2 px-md-4 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div>
@@ -184,21 +173,21 @@ function About() {
                   pursuit of knowledge in <strong>astrology</strong>,{" "}
                   <strong>numerology</strong>, <strong>Reiki healing</strong>,{" "}
                   <strong>tarot reading</strong>, and other esoteric disciplines
-                  reflects our commitment to holistic solutions. Combined with his
-                  dedication to advanced meditation and spiritual practices, this
-                  unique blend of skills ensures a comprehensive approach to
-                  addressing client needs.
+                  reflects our commitment to holistic solutions. Combined with
+                  his dedication to advanced meditation and spiritual practices,
+                  this unique blend of skills ensures a comprehensive approach
+                  to addressing client needs.
                 </p>
               </div>
             </Col>
           </Row>
 
-          {/* Why Choose Us Section */}
-           
           {/* Our Vision Section */}
-          <Row className="mx-0 mb-5" style={{ minHeight: "500px" }}> {/* Increased height */}
+          <Row className="mx-0 mb-4 mb-md-5 g-0" style={{ minHeight: "auto" }}>
             <Col
-              className="px-4 bg-white p-4 d-flex align-items-center justify-content-center"
+              xs={12}
+              md={8}
+              className="px-2 px-md-4 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div>
@@ -212,14 +201,15 @@ function About() {
                   strategies, and holistic living consultancy. We aim to empower
                   individuals and businesses to achieve financial stability,
                   spiritual harmony, and sustainable growth through innovative,
-                  client-centric approaches and a commitment to lifelong learning.
+                  client-centric approaches and a commitment to lifelong
+                  learning.
                 </p>
               </div>
             </Col>
             <Col
               xs={12}
               md={4}
-              className="d-flex align-items-center justify-content-center bg-white p-4"
+              className="d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div className="ratio ratio-1x1 w-75">
@@ -234,11 +224,11 @@ function About() {
           </Row>
 
           {/* Our Mission Section */}
-          <Row className="mx-0 mb-5" style={{ minHeight: "500px" }}> 
-          <Col
+          <Row className="mx-0 mb-4 mb-md-5 g-0" style={{ minHeight: "auto" }}>
+            <Col
               xs={12}
               md={4}
-              className="d-flex align-items-center justify-content-center bg-white p-4"
+              className="order-md-1 d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div className="ratio ratio-1x1 w-75">
@@ -251,7 +241,9 @@ function About() {
               </div>
             </Col>
             <Col
-              className="px-4 bg-white p-4 d-flex align-items-center justify-content-center"
+              xs={12}
+              md={8}
+              className="order-md-2 px-2 px-md-4 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div>
@@ -272,8 +264,8 @@ function About() {
                   </li>
                   <li>
                     <strong>Simplify Stock Market Navigation:</strong> Offer
-                    personalized trading strategies backed by technical expertise
-                    to ensure informed investment decisions.
+                    personalized trading strategies backed by technical
+                    expertise to ensure informed investment decisions.
                   </li>
                   <li>
                     <strong>Promote Holistic Well-Being:</strong> Integrate
@@ -282,16 +274,16 @@ function About() {
                     prosperous living and working environments.
                   </li>
                   <li>
-                    <strong>Foster Lifelong Growth:</strong> Encourage continuous
-                    learning and personal development through spiritual practices
-                    and expanding knowledge in astrology, numerology, Reiki, and
-                    more.
+                    <strong>Foster Lifelong Growth:</strong> Encourage
+                    continuous learning and personal development through
+                    spiritual practices and expanding knowledge in astrology,
+                    numerology, Reiki, and more.
                   </li>
                   <li>
                     <strong>Build Lasting Relationships:</strong> Uphold a
                     client-first philosophy by delivering customized,
-                    result-oriented solutions that align with individual needs and
-                    aspirations.
+                    result-oriented solutions that align with individual needs
+                    and aspirations.
                   </li>
                 </ol>
               </div>

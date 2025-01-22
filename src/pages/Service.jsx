@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
-import vastupurush from "../pages/asse/vastupurush.jpg"
+import vastupurush from "../pages/asse/vastupurush.jpg"; // Ensure the path is correct
 
 function Service() {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ function Service() {
       title: "Vastu",
       description:
         "Consult our Vastu experts to bring positivity and harmony to your living space. We provide personalized Vastu solutions for homes, offices, and commercial spaces.",
-      icon: "🧘",
+      Image: vastupurush, // Use the imported image here
       path: "/vastu", // Updated path to match the routing setup
       details: [
         "Personalized Vastu consultations",
@@ -86,7 +86,15 @@ function Service() {
                     marginBottom: "20px",
                   }}
                 >
-                  {service.icon}
+                  {service.icon ? ( // Check if icon exists
+                    <span>{service.icon}</span> // Render emoji if icon is present
+                  ) : (
+                    <img
+                      src={service.Image} // Render image if icon is not present
+                      alt={service.title}
+                      style={{ width: "80px", height: "80px", borderRadius: "50%" }} // Adjust size and style as needed
+                    />
+                  )}
                 </div>
                 <h3 style={{ color: "black", marginBottom: "15px" }}>
                   {service.title}

@@ -64,14 +64,18 @@ const Home = () => {
           overflowX: "auto", // Enable horizontal scrolling if needed
         }}
       >
-         <Col
+        {/* Welcome */}
+        <Col
           style={{
             flex: "0 0 100%", // Each component takes 100% width
             minWidth: "100%", // Ensure it doesn't shrink
           }}
         >
-          <Welcome />
+          <div className="mobile-width"> {/* Wrapper for mobile width */}
+            <Welcome />
+          </div>
         </Col>
+
         {/* Home1 */}
         <Col
           style={{
@@ -79,7 +83,9 @@ const Home = () => {
             minWidth: "100%", // Ensure it doesn't shrink
           }}
         >
-          <Home1 />
+          <div className="mobile-width"> {/* Wrapper for mobile width */}
+            <Home1 />
+          </div>
         </Col>
 
         {/* Home2 */}
@@ -89,7 +95,9 @@ const Home = () => {
             minWidth: "100%", // Ensure it doesn't shrink
           }}
         >
-          <Home2 />
+          <div className="mobile-width"> {/* Wrapper for mobile width */}
+            <Home2 />
+          </div>
         </Col>
 
         {/* Home3 */}
@@ -99,9 +107,23 @@ const Home = () => {
             minWidth: "100%", // Ensure it doesn't shrink
           }}
         >
-          <Home3 />
+          <div className="mobile-width"> {/* Wrapper for mobile width */}
+            <Home3 />
+          </div>
         </Col>
       </Row>
+
+      {/* Inline CSS for Media Query */}
+      <style>
+        {`
+          @media (max-width: 767.98px) {
+            .mobile-width {
+              width: 100% !important; /* Set width to 95% on mobile */
+              margin: 0 0; /* Center the content */
+            }
+          }
+        `}
+      </style>
     </Container>
   );
 };

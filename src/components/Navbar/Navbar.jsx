@@ -13,7 +13,7 @@ import {
 import { GrServices } from "react-icons/gr";
 
 function NavBar() {
-  const navigate = useNavigate();  // Ensure the useNavigate hook is used properly
+  const navigate = useNavigate(); // Ensure the useNavigate hook is used properly
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
 
@@ -30,7 +30,14 @@ function NavBar() {
   return (
     <div className="imp">
       {/* Logo above the Navbar */}
-      <div style={{ textAlign: "start", padding: "10px 60px" }}>
+      <div
+        style={{
+          textAlign: "start",
+          padding: "10px 60px",
+          display: "none", // Hide by default
+        }}
+        className="logo-container"
+      >
         <img
           src={VSTRC}
           alt="brand"
@@ -41,8 +48,8 @@ function NavBar() {
             transition: "transform 0.3s ease",
           }}
           onClick={() => navigate("/")} // Correctly using the navigate function
-          onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.2)"}
-          onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.2)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
         />
       </div>
 
@@ -132,6 +139,17 @@ function NavBar() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+      {/* Inline CSS for Media Query */}
+      <style>
+        {`
+          @media (min-width: 768px) {
+            .logo-container {
+              display: block !important; /* Show logo on screens larger than 768px */
+            }
+          }
+        `}
+      </style>
     </div>
   );
 }
