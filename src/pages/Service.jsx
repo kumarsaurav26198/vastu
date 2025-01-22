@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
+import vastupurush from "../pages/asse/vastupurush.jpg"
 
 function Service() {
   const navigate = useNavigate();
