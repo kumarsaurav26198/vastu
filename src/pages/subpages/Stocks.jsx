@@ -9,7 +9,7 @@ const Stocks = () => {
     <>
       <Container fluid style={{ backgroundColor: 'white', padding: '50px 0' }}>
         <Container>
-          <Row className="align-items-center">
+          <Row className="align-items-center mt-5">
             {/* Left side: Content (65% width) */}
             <Col md={8} style={{ textAlign: 'left', paddingRight: '20px' }}>
               <h1 style={{ color: 'black' }}>Stock Market Strategies</h1>

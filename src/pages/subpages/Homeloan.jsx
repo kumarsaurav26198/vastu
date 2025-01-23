@@ -9,7 +9,7 @@ const Homeloan = () => {
     <>
       <Container fluid style={{ backgroundColor: 'white', padding: '50px 0' }}>
         <Container>
-          <Row className="align-items-center">
+          <Row className="align-items-center mt-5">
             <Col md={8} style={{ textAlign: 'left', paddingRight: '20px' }}>
               <h1 style={{ color: 'black' }}>Home Loan Solutions</h1>
               <p style={{ color: 'black' }}>

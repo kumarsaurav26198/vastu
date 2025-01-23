@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Particle from "../components/Particle";
 import logo from "./VSTRC.png";
 import homecal from "./asse/Homecalimage.jpg";
 import finance from "./asse/finance.jpg";
@@ -11,19 +10,18 @@ import mission from "./asse/mission.jpg";
 
 function About() {
   return (
-    <Container fluid className="project-section p-2 p-md-4">
+    <Container fluid className="project-section p-0" style={{ overflowX: "hidden" }}>
       <Container fluid className="custom-bg p-0">
-        <Particle />
-        <Container fluid className="px-2 px-md-4">
+        <Container fluid className="px-0 ">
           {/* About Us Section */}
-          <Row className="mx-0 mb-4 mb-md-5 g-0" style={{ minHeight: "auto" }}>
+          <Row className="mx-0 g-0" style={{ minHeight: "auto", marginTop: "70px" }}>
             <Col
               xs={12}
               md={8}
-              className="px-2 px-md-4 text-center bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
+              className="order-2 order-md-1 px-0 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
-              <div>
+              <div style={{ padding: "45px" }}>
                 <h1 className="project-heading">
                   <strong className="yellow"> About Us</strong>
                 </h1>
@@ -40,7 +38,7 @@ function About() {
             <Col
               xs={12}
               md={4}
-              className="d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
+              className="order-1 order-md-2 d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div className="ratio ratio-1x1 w-75">
@@ -55,11 +53,11 @@ function About() {
           </Row>
 
           {/* Our Expertise Section */}
-          <Row className="mx-0 mb-4 mb-md-5 g-0" style={{ minHeight: "auto" }}>
+          <Row className="mx-0 g-0" style={{ minHeight: "auto" }}>
             <Col
               xs={12}
               md={4}
-              className="order-md-1 d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
+              className="order-1 order-md-1 d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div className="ratio ratio-1x1 w-75">
@@ -74,10 +72,10 @@ function About() {
             <Col
               xs={12}
               md={8}
-              className="order-md-2 px-2 px-md-4 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
+              className="order-2 order-md-2 px-0 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
-              <div>
+              <div style={{ padding: "15px" }}>
                 <h2 className="project-subheading text-black text-center">
                   Our Expertise
                 </h2>
@@ -99,14 +97,14 @@ function About() {
           </Row>
 
           {/* Beyond Finance Section */}
-          <Row className="mx-0 mb-4 mb-md-5 g-0" style={{ minHeight: "auto" }}>
+          <Row className="mx-0 g-0" style={{ minHeight: "auto" }}>
             <Col
               xs={12}
               md={8}
-              className="px-2 px-md-4 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
+              className="order-2 order-md-1 px-0 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
-              <div>
+              <div style={{ padding: "15px" }}>
                 <h2 className="project-subheading text-black text-center">
                   Beyond Finance
                 </h2>
@@ -126,7 +124,7 @@ function About() {
             <Col
               xs={12}
               md={4}
-              className="d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
+              className="order-1 order-md-2 d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div className="ratio ratio-1x1 w-75">
@@ -141,11 +139,11 @@ function About() {
           </Row>
 
           {/* Commitment to Growth Section */}
-          <Row className="mx-0 mb-4 mb-md-5 g-0" style={{ minHeight: "auto" }}>
+          <Row className="mx-0 g-0" style={{ minHeight: "auto" }}>
             <Col
               xs={12}
               md={4}
-              className="order-md-1 d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
+              className="order-1 order-md-1 d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div className="ratio ratio-1x1 w-75">
@@ -160,10 +158,10 @@ function About() {
             <Col
               xs={12}
               md={8}
-              className="order-md-2 px-2 px-md-4 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
+              className="order-2 order-md-2 px-0 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
-              <div>
+              <div style={{ padding: "15px" }}>
                 <h2 className="project-subheading text-black text-center">
                   Commitment to Growth
                 </h2>
@@ -183,14 +181,14 @@ function About() {
           </Row>
 
           {/* Our Vision Section */}
-          <Row className="mx-0 mb-4 mb-md-5 g-0" style={{ minHeight: "auto" }}>
+          <Row className="mx-0 g-0" style={{ minHeight: "auto" }}>
             <Col
               xs={12}
               md={8}
-              className="px-2 px-md-4 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
+              className="order-2 order-md-1 px-0 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
-              <div>
+              <div style={{ padding: "15px" }}>
                 <h2 className="project-subheading text-black text-center">
                   Our Vision
                 </h2>
@@ -209,7 +207,7 @@ function About() {
             <Col
               xs={12}
               md={4}
-              className="d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
+              className="order-1 order-md-2 d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div className="ratio ratio-1x1 w-75">
@@ -224,11 +222,11 @@ function About() {
           </Row>
 
           {/* Our Mission Section */}
-          <Row className="mx-0 mb-4 mb-md-5 g-0" style={{ minHeight: "auto" }}>
+          <Row className="mx-0 g-0" style={{ minHeight: "auto" }}>
             <Col
               xs={12}
               md={4}
-              className="order-md-1 d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
+              className="order-1 order-md-1 d-flex align-items-center justify-content-center bg-white p-3 p-md-4"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
               <div className="ratio ratio-1x1 w-75">
@@ -243,10 +241,10 @@ function About() {
             <Col
               xs={12}
               md={8}
-              className="order-md-2 px-2 px-md-4 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
+              className="order-2 order-md-2 px-0 bg-white p-3 p-md-4 d-flex align-items-center justify-content-center"
               style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
             >
-              <div>
+              <div style={{ padding: "15px" }}>
                 <h2 className="project-subheading text-black text-center">
                   Our Mission
                 </h2>
