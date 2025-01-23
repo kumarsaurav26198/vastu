@@ -3,24 +3,23 @@ import { Container, Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import contact from "../../pages/asse/contactUs.jpg";
 import { FaUser, FaEnvelope, FaComment, FaPhone } from "react-icons/fa"; // Icons for form fields
-import axios from "axios"; // Import Axios
+import { useNavigate } from "react-router-dom"; // For navigation
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [phone, setPhone] = useState(""); 
+  const [phone, setPhone] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false); // State to track form submission
+  const navigate = useNavigate(); // Hook for navigation
 
-  const SubmitEvent=(e)=>{
-    e.preventDefault();
-    console.log("submitting");
-    fetch ("https://script.google.com/macros/s/AKfycbyWVCsurqcyrJ9eos1gDOOnFwR_UvPr9GThEo-fhb1wif_aedhOrEu3XLG-9HYU5eFt/exec")
-  }
-  const sendEmail = async (e) => {
-
+  const SubmitEvent = async (e) => {
     e.preventDefault();
 
-    // Prepare the payload to send to your API
+    // Show the submission confirmation UI immediately
+    setIsSubmitted(true);
+
+    // Prepare the payload to send to Google Sheets
     const payload = {
       name: name,
       email: email,
@@ -28,24 +27,38 @@ const Contact = () => {
       message: message,
     };
 
+    // Reset form fields after submission
+    setName("");
+    setEmail("");
+    setPhone("");
+    setMessage("");
+
+    // Send the data to Google Sheets in the background
     try {
-      // Make an API request using Axios
-      const response = await axios.post("https://your-api-url/Myapiqwerrt", payload);
-      
-      // Handle success
-      console.log("Form submitted successfully:", response.data);
-      alert("Your message has been sent successfully!");
-      
-      // Reset form fields after submission
-      setName("");
-      setEmail("");
-      setPhone("");
-      setMessage("");
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbxBjRbluwnkQbalvA-rcHvljlabbwQ-GD4WeH46RxoS6JjA6cXVTjz2VHLJKiqGyitg/exec",
+        {
+          method: "POST",
+          body: new URLSearchParams(payload), // Convert payload to URL-encoded format
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          mode: "no-cors", // Add this to handle CORS issues
+        }
+      );
+
+      // Handle the response (optional)
+      const result = await response.text();
+      console.log("Form submitted successfully:", result);
     } catch (error) {
-      // Handle error
+      // Handle error (optional)
       console.error("Error submitting form:", error);
-      alert("There was an error submitting your message. Please try again.");
     }
+  };
+
+  // Function to navigate to the home page
+  const goToHomePage = () => {
+    navigate("/"); // Replace "/" with your home page route
   };
 
   return (
@@ -84,7 +97,7 @@ const Contact = () => {
         {/* Left Column */}
         <Col
           md={5}
-          className="mb-4 mb-md-0"
+          className="mb-4 mb-md-0 mx-5"
           style={{
             textAlign: "left",
             padding: "40px",
@@ -94,18 +107,36 @@ const Contact = () => {
             marginRight: "20px",
           }}
         >
-          <h1 style={{ fontSize: "2.5rem", color: "#343a40", marginBottom: "20px" }}>
+          <h1
+            style={{
+              fontSize: "2.5rem",
+              color: "#343a40",
+              marginBottom: "20px",
+            }}
+          >
             Get in Touch
           </h1>
-          <h1 style={{ fontSize: "2.5rem", color: "#ffc107", marginBottom: "20px" }}>
+          <h1
+            style={{
+              fontSize: "2.5rem",
+              color: "#ffc107",
+              marginBottom: "20px",
+            }}
+          >
             Contact Me
           </h1>
-          <p style={{ fontSize: "1.2rem", color: "#6c757d", marginBottom: "40px" }}>
+          <p
+            style={{
+              fontSize: "1.2rem",
+              color: "#6c757d",
+              marginBottom: "40px",
+            }}
+          >
             Have a question or want to work together? Feel free to reach out!
           </p>
         </Col>
 
-        {/* Right Column - Form */}
+        {/* Right Column - Form or Submission Confirmation */}
         <Col
           md={5}
           style={{
@@ -115,199 +146,260 @@ const Contact = () => {
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           }}
         >
-          <form
-            onSubmit={(e)=>SubmitEvent(e)}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px",
-            }}
-          >
-            {/* Name Field */}
-            <div style={{ position: "relative" }}>
-              <FaUser
-                style={{
-                  position: "absolute",
-                  left: "12px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  color: "#6c757d",
-                }}
-              />
-              <input
-                type="text"
-                name="from_name"
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                style={{
-                  width: "100%",
-                  padding: "12px 12px 12px 40px", // Add padding for the icon
-                  border: "1px solid #ddd",
-                  borderRadius: "5px",
-                  fontSize: "16px",
-                  backgroundColor: "white",
-                  color: "#343a40",
-                  outline: "none",
-                  transition: "border-color 0.3s ease, box-shadow 0.3s ease",
-                }}
-                onFocus={(e) => {
-                  e.currentTarget.style.borderColor = "#007bff";
-                  e.currentTarget.style.boxShadow = "0 0 8px rgba(0, 123, 255, 0.5)";
-                }}
-                onBlur={(e) => {
-                  e.currentTarget.style.borderColor = "#ddd";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              />
-            </div>
-
-            {/* Email Field */}
-            <div style={{ position: "relative" }}>
-              <FaEnvelope
-                style={{
-                  position: "absolute",
-                  left: "12px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  color: "#6c757d",
-                }}
-              />
-              <input
-                type="email"
-                name="reply_to"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                style={{
-                  width: "100%",
-                  padding: "12px 12px 12px 40px", // Add padding for the icon
-                  border: "1px solid #ddd",
-                  borderRadius: "5px",
-                  fontSize: "16px",
-                  backgroundColor: "white",
-                  color: "#343a40",
-                  outline: "none",
-                  transition: "border-color 0.3s ease, box-shadow 0.3s ease",
-                }}
-                onFocus={(e) => {
-                  e.currentTarget.style.borderColor = "#007bff";
-                  e.currentTarget.style.boxShadow = "0 0 8px rgba(0, 123, 255, 0.5)";
-                }}
-                onBlur={(e) => {
-                  e.currentTarget.style.borderColor = "#ddd";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              />
-            </div>
-
-            {/* Phone Number Field */}
-            <div style={{ position: "relative" }}>
-              <FaPhone
-                style={{
-                  position: "absolute",
-                  left: "12px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  color: "#6c757d",
-                }}
-              />
-              <input
-                type="text"
-                name="phone"
-                placeholder="10-digit phone number"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                maxLength="10" // Limit input to 10 digits
-                pattern="\d{10}" // Allow only numbers
-                required
-                style={{
-                  width: "100%",
-                  padding: "12px 12px 12px 40px", // Add padding for the icon
-                  border: "1px solid #ddd",
-                  borderRadius: "5px",
-                  fontSize: "16px",
-                  backgroundColor: "white",
-                  color: "#343a40",
-                  outline: "none",
-                  transition: "border-color 0.3s ease, box-shadow 0.3s ease",
-                }}
-                onFocus={(e) => {
-                  e.currentTarget.style.borderColor = "#007bff";
-                  e.currentTarget.style.boxShadow = "0 0 8px rgba(0, 123, 255, 0.5)";
-                }}
-                onBlur={(e) => {
-                  e.currentTarget.style.borderColor = "#ddd";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              />
-            </div>
-
-            {/* Message Field */}
-            <div style={{ position: "relative" }}>
-              <FaComment
-                style={{
-                  position: "absolute",
-                  left: "12px",
-                  top: "20px",
-                  color: "#6c757d",
-                }}
-              />
-              <textarea
-                name="message"
-                placeholder="Message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                style={{
-                  width: "100%",
-                  padding: "12px 12px 12px 40px", // Add padding for the icon
-                  border: "1px solid #ddd",
-                  borderRadius: "5px",
-                  fontSize: "16px",
-                  backgroundColor: "white",
-                  color: "#343a40",
-                  resize: "vertical",
-                  minHeight: "150px",
-                  outline: "none",
-                  transition: "border-color 0.3s ease, box-shadow 0.3s ease",
-                }}
-                onFocus={(e) => {
-                  e.currentTarget.style.borderColor = "#007bff";
-                  e.currentTarget.style.boxShadow = "0 0 8px rgba(0, 123, 255, 0.5)";
-                }}
-                onBlur={(e) => {
-                  e.currentTarget.style.borderColor = "#ddd";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              />
-            </div>
-
-            {/* Submit Button */}
-            <Button
-              type="submit"
+          {isSubmitted ? (
+            // Submission Confirmation UI
+            <div
               style={{
-                backgroundColor: "#007bff",
-                color: "white",
-                border: "none",
-                padding: "12px 20px",
-                borderRadius: "5px",
-                fontSize: "16px",
-                cursor: "pointer",
-                width: "100%",
-                transition: "background-color 0.3s ease, transform 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#0056b3";
-                e.currentTarget.style.transform = "translateY(-2px)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#007bff";
-                e.currentTarget.style.transform = "translateY(0)";
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "20px",
               }}
             >
-              Send
-            </Button>
-          </form>
+              <h2
+                style={{
+                  fontSize: "2rem",
+                  color: "#343a40",
+                  textAlign: "center",
+                }}
+              >
+                Thank you!
+              </h2>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "#6c757d",
+                  textAlign: "center",
+                }}
+              >
+                Your request has been successfully submitted. We will contact
+                you as soon as possible.
+              </p>
+              <Button
+                onClick={goToHomePage}
+                style={{
+                  backgroundColor: "#007bff",
+                  color: "white",
+                  border: "none",
+                  padding: "12px 20px",
+                  borderRadius: "5px",
+                  fontSize: "16px",
+                  cursor: "pointer",
+                  width: "100%",
+                  transition: "background-color 0.3s ease, transform 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#0056b3";
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#007bff";
+                  e.currentTarget.style.transform = "translateY(0)";
+                }}
+              >
+                Go to Home Page
+              </Button>
+            </div>
+          ) : (
+            // Form UI
+            <form
+              onSubmit={SubmitEvent}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "20px",
+              }}
+            >
+              {/* Name Field */}
+              <div style={{ position: "relative" }}>
+                <FaUser
+                  style={{
+                    position: "absolute",
+                    left: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    color: "#6c757d",
+                  }}
+                />
+                <input
+                  type="text"
+                  name="from_name"
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  style={{
+                    width: "100%",
+                    padding: "12px 12px 12px 40px", // Add padding for the icon
+                    border: "1px solid #ddd",
+                    borderRadius: "5px",
+                    fontSize: "16px",
+                    backgroundColor: "white",
+                    color: "#343a40",
+                    outline: "none",
+                    transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#007bff";
+                    e.currentTarget.style.boxShadow =
+                      "0 0 8px rgba(0, 123, 255, 0.5)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#ddd";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
+                />
+              </div>
+
+              {/* Email Field */}
+              <div style={{ position: "relative" }}>
+                <FaEnvelope
+                  style={{
+                    position: "absolute",
+                    left: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    color: "#6c757d",
+                  }}
+                />
+                <input
+                  type="email"
+                  name="reply_to"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  style={{
+                    width: "100%",
+                    padding: "12px 12px 12px 40px", // Add padding for the icon
+                    border: "1px solid #ddd",
+                    borderRadius: "5px",
+                    fontSize: "16px",
+                    backgroundColor: "white",
+                    color: "#343a40",
+                    outline: "none",
+                    transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#007bff";
+                    e.currentTarget.style.boxShadow =
+                      "0 0 8px rgba(0, 123, 255, 0.5)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#ddd";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
+                />
+              </div>
+
+              {/* Phone Number Field */}
+              <div style={{ position: "relative" }}>
+                <FaPhone
+                  style={{
+                    position: "absolute",
+                    left: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    color: "#6c757d",
+                  }}
+                />
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="10-digit phone number"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  maxLength="10" // Limit input to 10 digits
+                  pattern="\d{10}" // Allow only numbers
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "12px 12px 12px 40px", // Add padding for the icon
+                    border: "1px solid #ddd",
+                    borderRadius: "5px",
+                    fontSize: "16px",
+                    backgroundColor: "white",
+                    color: "#343a40",
+                    outline: "none",
+                    transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#007bff";
+                    e.currentTarget.style.boxShadow =
+                      "0 0 8px rgba(0, 123, 255, 0.5)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#ddd";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
+                />
+              </div>
+
+              {/* Message Field */}
+              <div style={{ position: "relative" }}>
+                <FaComment
+                  style={{
+                    position: "absolute",
+                    left: "12px",
+                    top: "20px",
+                    color: "#6c757d",
+                  }}
+                />
+                <textarea
+                  name="message"
+                  placeholder="Message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  style={{
+                    width: "100%",
+                    padding: "12px 12px 12px 40px", // Add padding for the icon
+                    border: "1px solid #ddd",
+                    borderRadius: "5px",
+                    fontSize: "16px",
+                    backgroundColor: "white",
+                    color: "#343a40",
+                    resize: "vertical",
+                    minHeight: "150px",
+                    outline: "none",
+                    transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#007bff";
+                    e.currentTarget.style.boxShadow =
+                      "0 0 8px rgba(0, 123, 255, 0.5)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#ddd";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
+                />
+              </div>
+
+              {/* Submit Button */}
+              <Button
+                type="submit"
+                style={{
+                  backgroundColor: "#007bff",
+                  color: "white",
+                  border: "none",
+                  padding: "12px 20px",
+                  borderRadius: "5px",
+                  fontSize: "16px",
+                  cursor: "pointer",
+                  width: "100%",
+                  transition: "background-color 0.3s ease, transform 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#0056b3";
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#007bff";
+                  e.currentTarget.style.transform = "translateY(0)";
+                }}
+              >
+                Send
+              </Button>
+            </form>
+          )}
         </Col>
       </Row>
     </Container>
