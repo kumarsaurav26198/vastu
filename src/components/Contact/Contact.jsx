@@ -9,10 +9,15 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [phone, setPhone] = useState(""); // State for phone number
+  const [phone, setPhone] = useState(""); 
 
-  // Function to send the form data to the API
+  const SubmitEvent=(e)=>{
+    e.preventDefault();
+    console.log("submitting");
+    fetch ("https://script.google.com/macros/s/AKfycbyWVCsurqcyrJ9eos1gDOOnFwR_UvPr9GThEo-fhb1wif_aedhOrEu3XLG-9HYU5eFt/exec")
+  }
   const sendEmail = async (e) => {
+
     e.preventDefault();
 
     // Prepare the payload to send to your API
@@ -111,7 +116,7 @@ const Contact = () => {
           }}
         >
           <form
-            onSubmit={sendEmail}
+            onSubmit={(e)=>SubmitEvent(e)}
             style={{
               display: "flex",
               flexDirection: "column",
