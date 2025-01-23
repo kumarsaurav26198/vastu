@@ -137,15 +137,23 @@ const Footer = () => {
 
         {/* Copyright */}
         <Row>
-          <Col className="text-center mt-4">
-            <p style={{ color: "#fff", marginBottom: "0" }}> {/* White text color */}
-              &copy; {new Date().getFullYear()} VSTRC. All Rights Reserved.
-             
-            </p>
-            <p style={{ color: "#fff", marginBottom: "0" }}> Developed by ARV MULTIMEDIA
-            </p>
-          </Col>
-        </Row>
+  <Col className="text-center mt-4">
+    <p style={{ color: "#fff", marginBottom: "0" }}> {/* White text color */}
+      &copy; {new Date().getFullYear()} VSTRC. All Rights Reserved.
+    </p>
+    <p style={{ color: "#fff", marginBottom: "0" }}>
+      Developed by{" "}
+      <a
+        href="https://arvmultimedia.com/"
+        target="_blank" // Opens the link in a new tab
+        rel="noopener noreferrer" // Security best practice for external links
+        style={{ color: "#fff", textDecoration: "underline" }} // Optional: Add styling
+      >
+        ARV MULTIMEDIA
+      </a>
+    </p>
+  </Col>
+</Row>
       </Container>
     </footer>
   );
