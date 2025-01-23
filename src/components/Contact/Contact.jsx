@@ -10,6 +10,7 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState(""); // State for phone number validation error
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [homeloan, setHomeloan] = useState(false);
   const [vastu, setVastu] = useState(false);
@@ -43,8 +44,28 @@ const Contact = () => {
     setMathError(""); // Clear error when user types
   };
 
+  const handlePhoneChange = (e) => {
+    const value = e.target.value;
+    // Allow only numeric input
+    if (/^\d*$/.test(value)) {
+      setPhone(value);
+      // Validate 10 digits
+      if (value.length === 10) {
+        setPhoneError(""); // Clear error if valid
+      } else {
+        setPhoneError("Phone number must be exactly 10 digits.");
+      }
+    }
+  };
+
   const SubmitEvent = async (e) => {
     e.preventDefault();
+
+    // Phone number validation
+    if (phone.length !== 10) {
+      setPhoneError("Phone number must be exactly 10 digits.");
+      return; // Stop form submission if phone number is invalid
+    }
 
     // Human verification check
     const correctAnswer = randomNumbers.num1 + randomNumbers.num2;
@@ -231,16 +252,17 @@ const Contact = () => {
               <div style={{ position: "relative" }}>
                 <FaPhone style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#6c757d" }} />
                 <input
-                  type="text"
+                  type="tel" // Use "tel" for better mobile keyboard support
                   name="phone"
                   placeholder="10-digit phone number"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={handlePhoneChange}
                   maxLength="10"
                   pattern="\d{10}"
                   required
                   style={{ width: "100%", padding: "12px 12px 12px 40px", border: "1px solid #ddd", borderRadius: "5px", fontSize: "16px", backgroundColor: "white", color: "#343a40", outline: "none", transition: "border-color 0.3s ease, box-shadow 0.3s ease" }}
                 />
+                {phoneError && <p style={{ color: "red", fontSize: "14px", marginTop: "5px" }}>{phoneError}</p>}
               </div>
 
               {/* Checkbox Field */}
