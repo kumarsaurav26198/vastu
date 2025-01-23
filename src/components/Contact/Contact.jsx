@@ -3,39 +3,43 @@ import { Container, Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import contact from "../../pages/asse/contactUs.jpg";
 import { FaUser, FaEnvelope, FaComment, FaPhone } from "react-icons/fa"; // Icons for form fields
-import axios from "axios"; // Import Axios
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [phone, setPhone] = useState(""); 
+  const [phone, setPhone] = useState("");
 
-  const SubmitEvent=(e)=>{
+  const SubmitEvent = async (e) => {
     e.preventDefault();
-    console.log("submitting");
-    fetch ("https://script.google.com/macros/s/AKfycbyWVCsurqcyrJ9eos1gDOOnFwR_UvPr9GThEo-fhb1wif_aedhOrEu3XLG-9HYU5eFt/exec")
-  }
-  const sendEmail = async (e) => {
-
-    e.preventDefault();
-
-    // Prepare the payload to send to your API
+  
+    // Prepare the payload to send to Google Sheets
     const payload = {
       name: name,
       email: email,
       phone: phone,
       message: message,
     };
-
+  
     try {
-      // Make an API request using Axios
-      const response = await axios.post("https://your-api-url/Myapiqwerrt", payload);
-      
-      // Handle success
-      console.log("Form submitted successfully:", response.data);
+      // Send the data to Google Sheets using fetch
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbyWVCsurqcyrJ9eos1gDOOnFwR_UvPr9GThEo-fhb1wif_aedhOrEu3XLG-9HYU5eFt/exec",
+        {
+          method: "POST",
+          body: new URLSearchParams(payload), // Convert payload to URL-encoded format
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          mode: "no-cors", // Add this to handle CORS issues
+        }
+      );
+  
+      // Handle the response
+      const result = await response.text();
+      console.log("Form submitted successfully:", result);
       alert("Your message has been sent successfully!");
-      
+  
       // Reset form fields after submission
       setName("");
       setEmail("");
@@ -116,7 +120,7 @@ const Contact = () => {
           }}
         >
           <form
-            onSubmit={(e)=>SubmitEvent(e)}
+            onSubmit={SubmitEvent}
             style={{
               display: "flex",
               flexDirection: "column",
