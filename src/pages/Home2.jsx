@@ -11,7 +11,7 @@ const Home2 = () => {
         {/* Left Column - Carousel */}
         <Col
           md={6}
-          className="d-flex justify-content-center align-items-center"
+          className="d-flex justify-content-center align-items-center order-1 order-md-2" // Reorder for mobile
           style={{ padding: "20px" }}
         >
           <Carousel
@@ -45,7 +45,7 @@ const Home2 = () => {
         {/* Right Column - Text Section */}
         <Col
           md={6}
-          className="d-flex flex-column justify-content-center"
+          className="d-flex flex-column justify-content-center order-2 order-md-1" // Reorder for mobile
           style={{ padding: "20px" }}
         >
           <h1 style={{ fontSize: "2.5rem", color: "black", marginBottom: "20px" }}>

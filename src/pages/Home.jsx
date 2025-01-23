@@ -27,8 +27,8 @@ const Home = () => {
   return (
     <Container
       fluid
+      className="p-lg-5 p-md-4 p-0 " // Responsive padding: large screens (5), medium screens (4), mobile (0)
       style={{
-        padding: "60px",
         minHeight: "100vh",
         display: "flex",
         alignItems: "center",
@@ -56,7 +56,7 @@ const Home = () => {
 
       {/* Content Section */}
       <Row
-        className="no-gutters" // Remove default gutters (spacing) between columns
+        className="no-gutters m-0 mt-5" // Remove default gutters and margin
         style={{
           display: "flex",
           flexDirection: "row", // Ensure horizontal layout
@@ -64,44 +64,71 @@ const Home = () => {
           overflowX: "auto", // Enable horizontal scrolling if needed
         }}
       >
-         <Col
+        {/* Welcome */}
+        <Col
+          className="p-0" // Remove padding for all screens
           style={{
             flex: "0 0 100%", // Each component takes 100% width
             minWidth: "100%", // Ensure it doesn't shrink
           }}
         >
-          <Welcome />
+          <div className="mobile-width"> {/* Wrapper for mobile width */}
+            <Welcome />
+          </div>
         </Col>
+
         {/* Home1 */}
         <Col
+          className="p-0" // Remove padding for all screens
           style={{
             flex: "0 0 100%", // Each component takes 100% width
             minWidth: "100%", // Ensure it doesn't shrink
           }}
         >
-          <Home1 />
+          <div className="mobile-width"> {/* Wrapper for mobile width */}
+            <Home1 />
+          </div>
         </Col>
 
         {/* Home2 */}
         <Col
+          className="p-0" // Remove padding for all screens
           style={{
             flex: "0 0 100%", // Each component takes 100% width
             minWidth: "100%", // Ensure it doesn't shrink
           }}
         >
-          <Home2 />
+          <div className="mobile-width"> {/* Wrapper for mobile width */}
+            <Home2 />
+          </div>
         </Col>
 
         {/* Home3 */}
         <Col
+          className="p-0" // Remove padding for all screens
           style={{
             flex: "0 0 100%", // Each component takes 100% width
             minWidth: "100%", // Ensure it doesn't shrink
           }}
         >
-          <Home3 />
+          <div className="mobile-width"> {/* Wrapper for mobile width */}
+            <Home3 />
+          </div>
         </Col>
       </Row>
+
+      {/* Inline CSS for Media Query */}
+      <style>
+        {`
+          @media (max-width: 767.98px) {
+            .mobile-width {
+              width: 100% !important; /* Set width to 100% on mobile */
+              margin: 0 !important; /* Remove margin on mobile */
+              padding: 0 !important; /* Remove padding on mobile */
+            }
+          }
+        `}
+      </style>
     </Container>
   );
 };
