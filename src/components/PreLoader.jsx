@@ -1,5 +1,6 @@
 import React from "react";
-import logo from "../pages/VSTRC.png"; 
+import logo from "../pages/VSTRC.png"; // Ensure the path to your image is correct
+import { RingLoader } from "react-spinners";
 
 function PreLoader(props) {
   const preloaderStyles = {
@@ -11,59 +12,39 @@ function PreLoader(props) {
     left: 0,
     width: "100%",
     height: "100%",
-    // backgroundColor: "rgba(255, 255, 255, 0.98)", // Increased opacity (less transparent)
-    backgroundColor: "#f7ede2", // Increased opacity (less transparent)
+    backgroundColor: "#f7ede2", // Background color
     zIndex: 1000,
   };
 
-  const squareStyles = {
+  const containerStyles = {
     position: "relative",
-    width: "100px",
-    height: "100px",
-    animation: "rotate 2s linear infinite", // Rotate the square
-  };
-
-  const squareInnerStyles = {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    border: "4px solid #3498db", // Blue border for the square
-    borderRadius: "10px", // Rounded corners
-    boxSizing: "border-box",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   };
 
   const imageStyles = {
-    position: "absolute",
+    width: "120px", // Size of the logo
+    height: "120px",
+    borderRadius: "50%", // Circular logo
+  };
+
+  const ringLoaderStyles = {
+    position: "absolute", // Position the RingLoader above the logo
     top: "50%",
     left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "120px", // Increased size of the image
-    height: "120px",
-    borderRadius: "50%", // Circular image
+    transform: "translate(-50%, -50%)", // Center the RingLoader
   };
 
   return (
-    <div
-      id={props.load ? "preloader" : "preloader-none"}
-      style={preloaderStyles}
-    >
-      <div style={squareStyles}>
-        <div style={squareInnerStyles}></div>
+    <div id={props.load ? "preloader" : "preloader-none"} style={preloaderStyles}>
+      <div style={containerStyles}>
+        <img src={logo} alt="Loading..." style={imageStyles} /> {/* Static logo */}
+        <div style={ringLoaderStyles}>
+          {/* Increase the size of the RingLoader using the `size` prop */}
+          <RingLoader color="#333333" speedMultiplier={0.8} size={140} />
+        </div>
       </div>
-      <img src={logo} alt="Loading..." style={imageStyles} />{" "}
-      {/* Static logo */}
-      <style>
-        {`
-          @keyframes rotate {
-            0% {
-              transform: rotate(0deg);
-            }
-            100% {
-              transform: rotate(360deg);
-            }
-          }
-        `}
-      </style>
     </div>
   );
 }
