@@ -6,11 +6,11 @@ const Footer = () => {
   return (
     <footer
       style={{
-        backgroundColor: "#047478", // Updated background color
+        backgroundColor: "#047478", 
         padding: "40px 0",
         borderTop: "1px solid #e9ecef",
-        marginTop: "auto", // Push footer to the bottom if needed
-        color: "#fff", // Set text color to white for better contrast
+        marginTop: "auto", 
+        color: "#fff", 
       }}
     >
       <Container>
@@ -26,17 +26,17 @@ const Footer = () => {
                   to="/"
                   style={{
                     textDecoration: "none",
-                    color: "#fff", // White text color
+                    color: "#fff", 
                     transition: "color 0.3s ease, text-decoration 0.3s ease",
-                    cursor: "pointer", // Change cursor to pointer
+                    cursor: "pointer", 
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#ffcc00"; // Yellow color on hover
-                    e.currentTarget.style.textDecoration = "underline"; // Underline on hover
+                    e.currentTarget.style.color = "#ffcc00"; 
+                    e.currentTarget.style.textDecoration = "underline"; 
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#fff"; // Reset color on leave
-                    e.currentTarget.style.textDecoration = "none"; // Remove underline on leave
+                    e.currentTarget.style.color = "#fff"; 
+                    e.currentTarget.style.textDecoration = "none"; 
                   }}
                 >
                   Home
@@ -47,9 +47,9 @@ const Footer = () => {
                   to="/service"
                   style={{
                     textDecoration: "none",
-                    color: "#fff", // White text color
+                    color: "#fff", 
                     transition: "color 0.3s ease, text-decoration 0.3s ease",
-                    cursor: "pointer", // Change cursor to pointer
+                    cursor: "pointer", 
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = "#ffcc00"; // Yellow color on hover

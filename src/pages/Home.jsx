@@ -27,8 +27,8 @@ const Home = () => {
   return (
     <Container
       fluid
+      className="p-lg-5 p-md-4 p-0 " // Responsive padding: large screens (5), medium screens (4), mobile (0)
       style={{
-        padding: "60px",
         minHeight: "100vh",
         display: "flex",
         alignItems: "center",
@@ -56,7 +56,7 @@ const Home = () => {
 
       {/* Content Section */}
       <Row
-        className="no-gutters" // Remove default gutters (spacing) between columns
+        className="no-gutters m-0 mt-5" // Remove default gutters and margin
         style={{
           display: "flex",
           flexDirection: "row", // Ensure horizontal layout
@@ -66,6 +66,7 @@ const Home = () => {
       >
         {/* Welcome */}
         <Col
+          className="p-0" // Remove padding for all screens
           style={{
             flex: "0 0 100%", // Each component takes 100% width
             minWidth: "100%", // Ensure it doesn't shrink
@@ -78,6 +79,7 @@ const Home = () => {
 
         {/* Home1 */}
         <Col
+          className="p-0" // Remove padding for all screens
           style={{
             flex: "0 0 100%", // Each component takes 100% width
             minWidth: "100%", // Ensure it doesn't shrink
@@ -90,6 +92,7 @@ const Home = () => {
 
         {/* Home2 */}
         <Col
+          className="p-0" // Remove padding for all screens
           style={{
             flex: "0 0 100%", // Each component takes 100% width
             minWidth: "100%", // Ensure it doesn't shrink
@@ -102,6 +105,7 @@ const Home = () => {
 
         {/* Home3 */}
         <Col
+          className="p-0" // Remove padding for all screens
           style={{
             flex: "0 0 100%", // Each component takes 100% width
             minWidth: "100%", // Ensure it doesn't shrink
@@ -118,8 +122,9 @@ const Home = () => {
         {`
           @media (max-width: 767.98px) {
             .mobile-width {
-              width: 100% !important; /* Set width to 95% on mobile */
-              margin: 0 0; /* Center the content */
+              width: 100% !important; /* Set width to 100% on mobile */
+              margin: 0 !important; /* Remove margin on mobile */
+              padding: 0 !important; /* Remove padding on mobile */
             }
           }
         `}
