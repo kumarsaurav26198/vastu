@@ -15,17 +15,6 @@ import { GrServices } from "react-icons/gr";
 function NavBar() {
   const navigate = useNavigate(); // Ensure the useNavigate hook is used properly
   const [expand, updateExpanded] = useState(false);
-  const [navColour, updateNavbar] = useState(false);
-
-  function scrollHandler() {
-    if (window.scrollY >= 20) {
-      updateNavbar(true);
-    } else {
-      updateNavbar(false);
-    }
-  }
-
-  window.addEventListener("scroll", scrollHandler);
 
   return (
     <div className="imp">
@@ -38,19 +27,24 @@ function NavBar() {
         }}
         className="logo-container"
       >
-        <img
-          src={VSTRC}
-          alt="brand"
-          style={{
-            width: "150px",
-            height: "auto",
-            cursor: "pointer",
-            transition: "transform 0.3s ease",
-          }}
-          onClick={() => navigate("/")} // Correctly using the navigate function
-          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.2)")}
-          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-        />
+       <img
+  src={VSTRC}
+  alt="brand"
+  style={{
+    width: "150px",
+    height: "auto",
+    cursor: "pointer",
+    transition: "transform 0.7s ease",
+    position: "fixed", // Fix the logo at the top
+    top: "10px", // Adjust the distance from the top
+    left: "60px", // Adjust the distance from the left
+    zIndex: 1001, // Ensure the logo is above all other content
+    backgroundColor: "transparent", // Optional: Add a background color if needed
+  }}
+  onClick={() => navigate("/")} // Correctly using the navigate function
+  onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.37)")}
+  onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+/>
       </div>
 
       {/* Navigation Bar */}
@@ -58,7 +52,10 @@ function NavBar() {
         expanded={expand}
         fixed="top"
         expand="md"
-        className={navColour ? "sticky" : "navbar"}
+        style={{
+          zIndex: 1000, // Ensure the navbar is above other content
+          backgroundColor: "#04767A", // Set the background color to #04767A
+        }}
       >
         <Container>
           <Navbar.Toggle
@@ -82,7 +79,7 @@ function NavBar() {
                   onClick={() => updateExpanded(false)}
                   style={{
                     textDecoration: "none",
-                    color: "black",
+                    color: "white", // Set text color to white for better contrast
                     position: "relative",
                   }}
                 >
@@ -96,7 +93,7 @@ function NavBar() {
                   onClick={() => updateExpanded(false)}
                   style={{
                     textDecoration: "none",
-                    color: "black",
+                    color: "white", // Set text color to white for better contrast
                     position: "relative",
                   }}
                 >
@@ -113,7 +110,7 @@ function NavBar() {
                   onClick={() => updateExpanded(false)}
                   style={{
                     textDecoration: "none",
-                    color: "black",
+                    color: "white", // Set text color to white for better contrast
                     position: "relative",
                   }}
                 >
@@ -127,7 +124,7 @@ function NavBar() {
                   onClick={() => updateExpanded(false)}
                   style={{
                     textDecoration: "none",
-                    color: "black",
+                    color: "white", // Set text color to white for better contrast
                     position: "relative",
                   }}
                 >

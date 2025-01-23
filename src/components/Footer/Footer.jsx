@@ -114,11 +114,11 @@ const Footer = () => {
               Address
             </h5>
             <p style={{ color: "#fff", marginBottom: "0" }}> {/* White text color */}
-              afcst,
+            FLAT NO 193,REHAYASHI APARTMENT,
               <br />
-              abce1,
+              POCKET-7,Sector 12 Dwarka,
               <br />
-              afdd
+              New Delhi,South West Delhi-110078
             </p>
           </Col>
 
@@ -128,9 +128,9 @@ const Footer = () => {
               Contact
             </h5>
             <p style={{ color: "#fff", marginBottom: "0" }}> {/* White text color */}
-              Phone: 9878987
+              {/* Phone: 9878987 */}
               <br />
-              Email: info@example.com
+              Email: vstrc07@gmail.com
             </p>
           </Col>
         </Row>
