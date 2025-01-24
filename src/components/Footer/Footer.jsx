@@ -114,11 +114,11 @@ const Footer = () => {
               Address
             </h5>
             <p style={{ color: "#fff", marginBottom: "0" }}> {/* White text color */}
-            FLAT NO 193,REHAYASHI APARTMENT,
-              <br />
-              POCKET-7,Sector 12 Dwarka,
+           193,Sector 12 Dwarka,
               <br />
               New Delhi,South West Delhi-110078
+              <br />
+          
             </p>
           </Col>
 
