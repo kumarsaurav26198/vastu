@@ -60,13 +60,19 @@ const Contact = () => {
 
   const SubmitEvent = async (e) => {
     e.preventDefault();
-
+  
+    // Check if at least one checkbox is selected
+    if (!homeloan && !vastu && !stocks) {
+      alert("Please select at least one service from the following options: Home Loan, Vastu, or Stocks, and let us know your requirements.");
+      return; // Stop form submission if no service is selected
+    }
+  
     // Phone number validation
     if (phone.length !== 10) {
       setPhoneError("Phone number must be exactly 10 digits.");
       return; // Stop form submission if phone number is invalid
     }
-
+  
     // Human verification check
     const correctAnswer = randomNumbers.num1 + randomNumbers.num2;
     if (!isHuman || mathAnswer !== correctAnswer.toString()) {
@@ -75,10 +81,10 @@ const Contact = () => {
       );
       return; // Stop form submission if verification fails
     }
-
+  
     // Show the submission confirmation UI immediately
     setIsSubmitted(true);
-
+  
     // Prepare the payload to send to Google Sheets
     const payload = {
       name: name,
@@ -89,7 +95,7 @@ const Contact = () => {
       vastu: vastu ? "vastu" : " ",
       stocks: stocks ? "stocks" : " ",
     };
-
+  
     // Reset form fields after submission
     setName("");
     setEmail("");
@@ -100,7 +106,7 @@ const Contact = () => {
     setStocks(false);
     setIsHuman(false);
     setMathAnswer("");
-
+  
     // Send the data to Google Sheets in the background
     try {
       const response = await fetch(
@@ -114,7 +120,7 @@ const Contact = () => {
           mode: "no-cors", // Add this to handle CORS issues
         }
       );
-
+  
       // Handle the response (optional)
       const result = await response.text();
       console.log("Form submitted successfully:", result);
