@@ -60,34 +60,42 @@ const Contact = () => {
 
   const SubmitEvent = async (e) => {
     e.preventDefault();
-
+  
+    // Check if at least one checkbox is selected
+    if (!homeloan && !vastu && !stocks) {
+      alert("Please select at least one service from the following options: Home Loan, Vastu, or Stocks, and let us know your requirements.");
+      return; // Stop form submission if no service is selected
+    }
+  
     // Phone number validation
     if (phone.length !== 10) {
       setPhoneError("Phone number must be exactly 10 digits.");
       return; // Stop form submission if phone number is invalid
     }
-
+  
     // Human verification check
     const correctAnswer = randomNumbers.num1 + randomNumbers.num2;
     if (!isHuman || mathAnswer !== correctAnswer.toString()) {
-      setMathError("Please verify that you are a human and provide the correct answer.");
+      setMathError(
+        "Please verify that you are a human and provide the correct answer."
+      );
       return; // Stop form submission if verification fails
     }
-
+  
     // Show the submission confirmation UI immediately
     setIsSubmitted(true);
-
+  
     // Prepare the payload to send to Google Sheets
     const payload = {
       name: name,
       email: email,
       phone: phone,
       message: message,
-      homeloan: homeloan ? "Yes" : "No",
-      vastu: vastu ? "Yes" : "No",
-      stocks: stocks ? "Yes" : "No",
+      homeloan: homeloan ? "homeloan" : " ",
+      vastu: vastu ? "vastu" : " ",
+      stocks: stocks ? "stocks" : " ",
     };
-
+  
     // Reset form fields after submission
     setName("");
     setEmail("");
@@ -98,7 +106,7 @@ const Contact = () => {
     setStocks(false);
     setIsHuman(false);
     setMathAnswer("");
-
+  
     // Send the data to Google Sheets in the background
     try {
       const response = await fetch(
@@ -112,7 +120,7 @@ const Contact = () => {
           mode: "no-cors", // Add this to handle CORS issues
         }
       );
-
+  
       // Handle the response (optional)
       const result = await response.text();
       console.log("Form submitted successfully:", result);
@@ -162,7 +170,7 @@ const Contact = () => {
         {/* Left Column */}
         <Col
           md={5}
-          className="mb-4 mb-md-0 mx-5"
+          className="mb-4 mb-md-0 mx-5 "
           style={{
             textAlign: "left",
             padding: "40px",
@@ -172,13 +180,32 @@ const Contact = () => {
             marginRight: "20px",
           }}
         >
-          <h1 style={{ fontSize: "2.5rem", color: "#343a40", marginBottom: "20px" }}>
+          <h1
+            style={{
+              fontSize: "2.5rem",
+              color: "#343a40",
+              marginBottom: "20px",
+              marginTop: "120px",
+            }}
+          >
             Get in Touch
           </h1>
-          <h1 style={{ fontSize: "2.5rem", color: "#ffc107", marginBottom: "20px" }}>
+          <h1
+            style={{
+              fontSize: "2.5rem",
+              color: "#ffc107",
+              marginBottom: "20px",
+            }}
+          >
             Contact Me
           </h1>
-          <p style={{ fontSize: "1.2rem", color: "#6c757d", marginBottom: "40px" }}>
+          <p
+            style={{
+              fontSize: "1.2rem",
+              color: "#6c757d",
+              marginBottom: "40px",
+            }}
+          >
             Have a question or want to work together? Feel free to reach out!
           </p>
         </Col>
@@ -195,12 +222,32 @@ const Contact = () => {
         >
           {isSubmitted ? (
             // Submission Confirmation UI
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
-              <h2 style={{ fontSize: "2rem", color: "#343a40", textAlign: "center" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "20px",
+              }}
+            >
+              <h2
+                style={{
+                  fontSize: "2rem",
+                  color: "#343a40",
+                  textAlign: "center",
+                }}
+              >
                 Thank you!
               </h2>
-              <p style={{ fontSize: "1.2rem", color: "#6c757d", textAlign: "center" }}>
-                Your request has been successfully submitted. We will contact you as soon as possible.
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "#6c757d",
+                  textAlign: "center",
+                }}
+              >
+                Your request has been successfully submitted. We will contact
+                you as soon as possible.
               </p>
               <Button
                 onClick={goToHomePage}
@@ -221,36 +268,85 @@ const Contact = () => {
             </div>
           ) : (
             // Form UI
-            <form onSubmit={SubmitEvent} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <form
+              onSubmit={SubmitEvent}
+              style={{ display: "flex", flexDirection: "column", gap: "20px" }}
+            >
               {/* Name Field */}
               <div style={{ position: "relative" }}>
-                <FaUser style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#6c757d" }} />
+                <FaUser
+                  style={{
+                    position: "absolute",
+                    left: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    color: "#6c757d",
+                  }}
+                />
                 <input
                   type="text"
                   name="from_name"
                   placeholder="Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  style={{ width: "100%", padding: "12px 12px 12px 40px", border: "1px solid #ddd", borderRadius: "5px", fontSize: "16px", backgroundColor: "white", color: "#343a40", outline: "none", transition: "border-color 0.3s ease, box-shadow 0.3s ease" }}
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "12px 12px 12px 40px",
+                    border: "1px solid #ddd",
+                    borderRadius: "5px",
+                    fontSize: "16px",
+                    backgroundColor: "white",
+                    color: "#343a40",
+                    outline: "none",
+                    transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                  }}
                 />
               </div>
 
               {/* Email Field */}
               <div style={{ position: "relative" }}>
-                <FaEnvelope style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#6c757d" }} />
+                <FaEnvelope
+                  style={{
+                    position: "absolute",
+                    left: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    color: "#6c757d",
+                  }}
+                />
                 <input
                   type="email"
                   name="reply_to"
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  style={{ width: "100%", padding: "12px 12px 12px 40px", border: "1px solid #ddd", borderRadius: "5px", fontSize: "16px", backgroundColor: "white", color: "#343a40", outline: "none", transition: "border-color 0.3s ease, box-shadow 0.3s ease" }}
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "12px 12px 12px 40px",
+                    border: "1px solid #ddd",
+                    borderRadius: "5px",
+                    fontSize: "16px",
+                    backgroundColor: "white",
+                    color: "#343a40",
+                    outline: "none",
+                    transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                  }}
                 />
               </div>
 
               {/* Phone Number Field */}
               <div style={{ position: "relative" }}>
-                <FaPhone style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#6c757d" }} />
+                <FaPhone
+                  style={{
+                    position: "absolute",
+                    left: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    color: "#6c757d",
+                  }}
+                />
                 <input
                   type="tel" // Use "tel" for better mobile keyboard support
                   name="phone"
@@ -260,14 +356,39 @@ const Contact = () => {
                   maxLength="10"
                   pattern="\d{10}"
                   required
-                  style={{ width: "100%", padding: "12px 12px 12px 40px", border: "1px solid #ddd", borderRadius: "5px", fontSize: "16px", backgroundColor: "white", color: "#343a40", outline: "none", transition: "border-color 0.3s ease, box-shadow 0.3s ease" }}
+                  style={{
+                    width: "100%",
+                    padding: "12px 12px 12px 40px",
+                    border: "1px solid #ddd",
+                    borderRadius: "5px",
+                    fontSize: "16px",
+                    backgroundColor: "white",
+                    color: "#343a40",
+                    outline: "none",
+                    transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                  }}
                 />
-                {phoneError && <p style={{ color: "red", fontSize: "14px", marginTop: "5px" }}>{phoneError}</p>}
+                {phoneError && (
+                  <p
+                    style={{ color: "red", fontSize: "14px", marginTop: "5px" }}
+                  >
+                    {phoneError}
+                  </p>
+                )}
               </div>
 
               {/* Checkbox Field */}
-              <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
-                <label style={{ fontSize: "16px", color: "#343a40", display: "flex", alignItems: "center" }}>
+              <div
+                style={{ display: "flex", gap: "20px", alignItems: "center" }}
+              >
+                <label
+                  style={{
+                    fontSize: "16px",
+                    color: "#343a40",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
                   <input
                     type="checkbox"
                     name="homeloan"
@@ -277,7 +398,14 @@ const Contact = () => {
                   />
                   Home Loan
                 </label>
-                <label style={{ fontSize: "16px", color: "#343a40", display: "flex", alignItems: "center" }}>
+                <label
+                  style={{
+                    fontSize: "16px",
+                    color: "#343a40",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
                   <input
                     type="checkbox"
                     name="vastu"
@@ -287,7 +415,14 @@ const Contact = () => {
                   />
                   Vastu
                 </label>
-                <label style={{ fontSize: "16px", color: "#343a40", display: "flex", alignItems: "center" }}>
+                <label
+                  style={{
+                    fontSize: "16px",
+                    color: "#343a40",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
                   <input
                     type="checkbox"
                     name="stocks"
@@ -301,19 +436,51 @@ const Contact = () => {
 
               {/* Message Field */}
               <div style={{ position: "relative" }}>
-                <FaComment style={{ position: "absolute", left: "12px", top: "20px", color: "#6c757d" }} />
+                <FaComment
+                  style={{
+                    position: "absolute",
+                    left: "12px",
+                    top: "20px",
+                    color: "#6c757d",
+                  }}
+                />
                 <textarea
                   name="message"
                   placeholder="Message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  style={{ width: "100%", padding: "12px 12px 12px 40px", border: "1px solid #ddd", borderRadius: "5px", fontSize: "16px", backgroundColor: "white", color: "#343a40", resize: "vertical", minHeight: "150px", outline: "none", transition: "border-color 0.3s ease, box-shadow 0.3s ease" }}
+                  style={{
+                    width: "100%",
+                    padding: "12px 12px 12px 40px",
+                    border: "1px solid #ddd",
+                    borderRadius: "5px",
+                    fontSize: "16px",
+                    backgroundColor: "white",
+                    color: "#343a40",
+                    resize: "vertical",
+                    minHeight: "150px",
+                    outline: "none",
+                    transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                  }}
                 />
               </div>
 
               {/* Human Verification */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                <label style={{ fontSize: "16px", color: "#343a40", display: "flex", alignItems: "center" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "10px",
+                }}
+              >
+                <label
+                  style={{
+                    fontSize: "16px",
+                    color: "#343a40",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
                   <input
                     type="checkbox"
                     name="isHuman"
@@ -323,7 +490,9 @@ const Contact = () => {
                   />
                   I am a human
                 </label>
-                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
                   <span style={{ fontSize: "16px", color: "#343a40" }}>
                     {randomNumbers.num1} + {randomNumbers.num2} =
                   </span>
@@ -331,10 +500,19 @@ const Contact = () => {
                     type="text"
                     value={mathAnswer}
                     onChange={handleMathAnswerChange}
-                    style={{ width: "60px", padding: "8px", border: "1px solid #ddd", borderRadius: "5px", fontSize: "16px", outline: "none" }}
+                    style={{
+                      width: "60px",
+                      padding: "8px",
+                      border: "1px solid #ddd",
+                      borderRadius: "5px",
+                      fontSize: "16px",
+                      outline: "none",
+                    }}
                   />
                 </div>
-                {mathError && <p style={{ color: "red", fontSize: "14px" }}>{mathError}</p>}
+                {mathError && (
+                  <p style={{ color: "red", fontSize: "14px" }}>{mathError}</p>
+                )}
               </div>
 
               {/* Submit Button */}
