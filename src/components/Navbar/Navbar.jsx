@@ -10,6 +10,8 @@ import {
   AiOutlineFundProjectionScreen,
   AiOutlineContacts,
 } from "react-icons/ai";
+import { FaCalculator } from "react-icons/fa";
+import { FcCalculator } from "react-icons/fc";
 import { GrServices } from "react-icons/gr";
 
 function NavBar() {
@@ -115,6 +117,34 @@ function NavBar() {
                   }}
                 >
                   <GrServices style={{ marginBottom: "2px" }} /> Service
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link
+                  as={Link}
+                  to="/emicalculator"
+                  onClick={() => updateExpanded(false)}
+                  style={{
+                    textDecoration: "none",
+                    color: "white", // Set text color to white for better contrast
+                    position: "relative",
+                  }}
+                >
+                  <FaCalculator  style={{ marginBottom: "2px" }} /> EMI Calculator
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link
+                  as={Link}
+                  to="/compareemi"
+                  onClick={() => updateExpanded(false)}
+                  style={{
+                    textDecoration: "none",
+                    color: "white", // Set text color to white for better contrast
+                    position: "relative",
+                  }}
+                >
+                  <FcCalculator  style={{ marginBottom: "2px" }} /> Compare EMI
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
