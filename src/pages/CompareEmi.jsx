@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Table, Form } from "react-bootstrap";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { numberToWords } from "../components/Function/Numtoword";
 
 const CompareEmi = () => {
   // State for bank names and interest rates
-  const [bankInterestMap, setBankInterestMap] = useState({});
+  const [bankInterestMap, setBankInterestMap] = useState({}); // Object to store bank names and interest rates
 
   // State for loan details and EMI results
   const [loanAmount, setLoanAmount] = useState(10000);
@@ -21,8 +22,11 @@ const CompareEmi = () => {
       const response = await axios.get(scriptUrl);
       const jsonData = response.data;
 
+      // Ensure the data is in the expected format (array of objects)
       if (Array.isArray(jsonData) && jsonData.length > 0) {
         const firstRow = jsonData[0]; // Extract the first object in the array
+
+        // Update state with bank names and interest rates
         setBankInterestMap(firstRow);
 
         // Initialize EMI results with bank names and interest rates
@@ -30,14 +34,13 @@ const CompareEmi = () => {
           bankName,
           interestRate: firstRow[bankName],
           emi: "N/A",
-          totalInterest: "N/A",
         }));
         setEmiResults(initialResults);
       } else {
-        alert("Unexpected data structure received from the server.");
+        console.error("Unexpected data structure:", jsonData);
       }
     } catch (error) {
-      alert("Error fetching data. Please try again later.");
+      console.error("Error fetching data:", error);
     }
   };
 
@@ -64,17 +67,19 @@ const CompareEmi = () => {
       };
     });
 
-    setEmiResults(results);
-    setTotalInterest(totalInterestPaid.toFixed(2));
+    setEmiResults(results); // Update state with new EMI results
+    setTotalInterest(totalInterestPaid.toFixed(2)); // Update total interest
   };
 
   // Helper function to calculate EMI for a single bank
   const calculateSingleEMI = (rate) => {
     const monthlyRate = rate / 1200; // Convert annual rate to monthly
-    return rate > 0
-      ? (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, loanTenure)) /
+    const emi =
+      rate > 0
+        ? (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, loanTenure)) /
           (Math.pow(1 + monthlyRate, loanTenure) - 1)
-      : 0;
+        : 0;
+    return emi; // Return EMI
   };
 
   // Fetch data on component mount
@@ -98,6 +103,9 @@ const CompareEmi = () => {
                 value={loanAmount}
                 onChange={(e) => setLoanAmount(parseFloat(e.target.value))}
               />
+              <div style={{ marginTop: "5px", color: "#343a40", fontSize: "14px" }}>
+                              <strong>Amount in Words:</strong> {numberToWords(loanAmount)}
+                            </div>
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Loan Tenure (Months)</Form.Label>
@@ -136,10 +144,6 @@ const CompareEmi = () => {
                   <td>{result.totalInterest}</td>
                 </tr>
               ))}
-              <tr>
-                <td colSpan="3" className="text-end"><strong>Total Interest Paid:</strong></td>
-                <td><strong>{totalInterest}</strong></td>
-              </tr>
             </tbody>
           </Table>
         </Col>
