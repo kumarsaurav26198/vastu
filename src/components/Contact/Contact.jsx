@@ -10,21 +10,22 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [phone, setPhone] = useState("");
-  const [phoneError, setPhoneError] = useState(""); // State for phone number validation error
+  const [phoneError, setPhoneError] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [homeloan, setHomeloan] = useState(false);
   const [vastu, setVastu] = useState(false);
   const [stocks, setStocks] = useState(false);
-  const [isHuman, setIsHuman] = useState(false); // State for "I am a human" checkbox
-  const [mathAnswer, setMathAnswer] = useState(""); // State for math answer input
-  const [mathError, setMathError] = useState(""); // State for math answer error message
-  const [randomNumbers, setRandomNumbers] = useState({ num1: 0, num2: 0 }); // State for random numbers
+  const [isHuman, setIsHuman] = useState(false);
+  const [mathAnswer, setMathAnswer] = useState("");
+  const [mathError, setMathError] = useState("");
+  const [randomNumbers, setRandomNumbers] = useState({ num1: 0, num2: 0 });
+  const [checkboxError, setCheckboxError] = useState(""); // State for checkbox validation error
   const navigate = useNavigate();
 
   // Generate random numbers between 2 and 10
   useEffect(() => {
-    const num1 = Math.floor(Math.random() * 9) + 2; // Random number between 2 and 10
-    const num2 = Math.floor(Math.random() * 9) + 2; // Random number between 2 and 10
+    const num1 = Math.floor(Math.random() * 9) + 2;
+    const num2 = Math.floor(Math.random() * 9) + 2;
     setRandomNumbers({ num1, num2 });
   }, []);
 
@@ -33,6 +34,7 @@ const Contact = () => {
     if (name === "homeloan") setHomeloan(checked);
     else if (name === "vastu") setVastu(checked);
     else if (name === "stocks") setStocks(checked);
+    setCheckboxError(""); // Clear error when user selects a checkbox
   };
 
   const handleHumanCheckboxChange = (e) => {
@@ -41,17 +43,15 @@ const Contact = () => {
 
   const handleMathAnswerChange = (e) => {
     setMathAnswer(e.target.value);
-    setMathError(""); // Clear error when user types
+    setMathError("");
   };
 
   const handlePhoneChange = (e) => {
     const value = e.target.value;
-    // Allow only numeric input
     if (/^\d*$/.test(value)) {
       setPhone(value);
-      // Validate 10 digits
       if (value.length === 10) {
-        setPhoneError(""); // Clear error if valid
+        setPhoneError("");
       } else {
         setPhoneError("Phone number must be exactly 10 digits.");
       }
@@ -60,31 +60,33 @@ const Contact = () => {
 
   const SubmitEvent = async (e) => {
     e.preventDefault();
-  
+
     // Check if at least one checkbox is selected
     if (!homeloan && !vastu && !stocks) {
-      alert("Please select at least one service from the following options: Home Loan, Vastu, or Stocks, and let us know your requirements.");
+      setCheckboxError("Please select at least one service.");
       return; // Stop form submission if no service is selected
+    } else {
+      setCheckboxError(""); // Clear error if at least one checkbox is selected
     }
-  
+
     // Phone number validation
     if (phone.length !== 10) {
       setPhoneError("Phone number must be exactly 10 digits.");
-      return; // Stop form submission if phone number is invalid
+      return;
     }
-  
+
     // Human verification check
     const correctAnswer = randomNumbers.num1 + randomNumbers.num2;
     if (!isHuman || mathAnswer !== correctAnswer.toString()) {
       setMathError(
         "Please verify that you are a human and provide the correct answer."
       );
-      return; // Stop form submission if verification fails
+      return;
     }
-  
+
     // Show the submission confirmation UI immediately
     setIsSubmitted(true);
-  
+
     // Prepare the payload to send to Google Sheets
     const payload = {
       name: name,
@@ -95,7 +97,7 @@ const Contact = () => {
       vastu: vastu ? "vastu" : " ",
       stocks: stocks ? "stocks" : " ",
     };
-  
+
     // Reset form fields after submission
     setName("");
     setEmail("");
@@ -106,26 +108,25 @@ const Contact = () => {
     setStocks(false);
     setIsHuman(false);
     setMathAnswer("");
-  
+
     // Send the data to Google Sheets in the background
     try {
       const response = await fetch(
         "https://script.google.com/macros/s/AKfycbyqp9eNXKG2LuP2IuJ65QkRjiz7HxnLEtBvc7wwqYDVbJXZTc5CYW-PgbI3X-mLPLcWjA/exec",
         {
           method: "POST",
-          body: new URLSearchParams(payload), // Convert payload to URL-encoded format
+          body: new URLSearchParams(payload),
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
-          mode: "no-cors", // Add this to handle CORS issues
+          mode: "no-cors",
         }
       );
-  
+
       // Handle the response (optional)
       const result = await response.text();
       console.log("Form submitted successfully:", result);
     } catch (error) {
-      // Handle error (optional)
       console.error("Error submitting form:", error);
     }
   };
@@ -348,7 +349,7 @@ const Contact = () => {
                   }}
                 />
                 <input
-                  type="tel" // Use "tel" for better mobile keyboard support
+                  type="tel"
                   name="phone"
                   placeholder="10-digit phone number"
                   value={phone}
@@ -433,6 +434,11 @@ const Contact = () => {
                   Stocks
                 </label>
               </div>
+              {checkboxError && (
+                <p style={{ color: "red", fontSize: "14px", marginTop: "5px" }}>
+                  {checkboxError}
+                </p>
+              )}
 
               {/* Message Field */}
               <div style={{ position: "relative" }}>

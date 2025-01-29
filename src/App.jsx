@@ -27,6 +27,8 @@ import Service from "./pages/Service";
 import Homeloan from "./pages/subpages/Homeloan";
 import Vastu from "./pages/subpages/Vastu";
 import Stocks from "./pages/subpages/Stocks";
+import Emicalculator from "./pages/Emicalculator";
+import CompareEmi from "./pages/CompareEmi";
 
 function App() {
   const [load, upadateLoad] = useState(true);
@@ -55,6 +57,8 @@ function App() {
           <Route path="/homeloan" element={<Homeloan />} />
           <Route path="/vastu" element={<Vastu />} />
           <Route path="/stocks" element={<Stocks />} />
+          <Route path="/compareemi" element={<CompareEmi />} />
+          <Route path="/emicalculator" element={<Emicalculator />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />
