@@ -112,7 +112,7 @@ const Contact = () => {
     // Send the data to Google Sheets in the background
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbyqp9eNXKG2LuP2IuJ65QkRjiz7HxnLEtBvc7wwqYDVbJXZTc5CYW-PgbI3X-mLPLcWjA/exec",
+        "https://script.google.com/macros/s/AKfycbyrzdYhpyGnh5Tnv6cNG-tzNJzeDvHIA-3NZLlQQH3ogz_e3WOGkvYVKtc9WtvDUGnCww/exec",
         {
           method: "POST",
           body: new URLSearchParams(payload),
