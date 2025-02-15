@@ -122,9 +122,11 @@ const Emicalculator = () => {
     if (value === "") {
       handleExtraPayment(month, 0); // Set to 0 if the input is cleared
     } else if (!isNaN(value)) {
-      handleExtraPayment(month, parseFloat(value));
+      const parsedValue = Math.max(0, parseFloat(value)); // Ensure value is not negative
+      handleExtraPayment(month, parsedValue);
     }
   };
+  
 
   // Calculate EMI on component mount and when inputs change
   useEffect(() => {

@@ -57,6 +57,9 @@ function NavBar() {
         style={{
           zIndex: 1000, // Ensure the navbar is above other content
           backgroundColor: "#04767A", // Set the background color to #04767A
+          wrap: "nowrap",
+          overflow: "hidden",
+       
         }}
       >
         <Container>
@@ -85,7 +88,7 @@ function NavBar() {
                     position: "relative",
                   }}
                 >
-                  <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
+                  <AiOutlineHome style={{ marginBottom: "2px", }} /> Home
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
@@ -97,10 +100,11 @@ function NavBar() {
                     textDecoration: "none",
                     color: "white", // Set text color to white for better contrast
                     position: "relative",
+                    
                   }}
                 >
                   <AiOutlineFundProjectionScreen
-                    style={{ marginBottom: "2px" }}
+                    style={{ marginBottom: "2px",  }}
                   />{" "}
                   About Us
                 </Nav.Link>
