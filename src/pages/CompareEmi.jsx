@@ -34,6 +34,7 @@ const CompareEmi = () => {
           bankName,
           interestRate: firstRow[bankName],
           emi: "N/A",
+          totalInterest: "N/A",
         }));
         setEmiResults(initialResults);
       } else {
@@ -88,7 +89,15 @@ const CompareEmi = () => {
   }, []);
 
   return (
-    <Container fluid className="project-section" style={{ minHeight: "100vh", marginTop: "80px" }}>
+    <Container
+      fluid
+      className="project-section"
+      style={{
+        minHeight: "100vh",
+        marginTop: "80px",
+        fontFamily: "'Roboto Mono', monospace", // Apply the font here
+      }}
+    >
       <Row className="justify-content-center">
         <Col md={8}>
           <h1 className="text-center mb-4">Bank EMI Calculator</h1>
@@ -102,10 +111,11 @@ const CompareEmi = () => {
                 placeholder="Enter loan amount"
                 value={loanAmount}
                 onChange={(e) => setLoanAmount(parseFloat(e.target.value))}
+                style={{ fontFamily: "'Roboto Mono', monospace" }} // Apply font to input
               />
               <div style={{ marginTop: "5px", color: "#343a40", fontSize: "14px" }}>
-                              <strong>Amount in Words:</strong> {numberToWords(loanAmount)}
-                            </div>
+                <strong>Amount in Words:</strong> {numberToWords(loanAmount)}
+              </div>
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Loan Tenure (Months)</Form.Label>
@@ -114,12 +124,14 @@ const CompareEmi = () => {
                 placeholder="Enter loan tenure in months"
                 value={loanTenure}
                 onChange={(e) => setLoanTenure(parseInt(e.target.value))}
+                style={{ fontFamily: "'Roboto Mono', monospace" }} // Apply font to input
               />
             </Form.Group>
             <button
               type="button"
               className="btn btn-primary"
               onClick={calculateEMI}
+              style={{ fontFamily: "'Roboto Mono', monospace" }} // Apply font to button
             >
               Calculate EMI
             </button>
@@ -146,6 +158,14 @@ const CompareEmi = () => {
               ))}
             </tbody>
           </Table>
+
+          {/* Total Interest Summary */}
+          <div className="mt-4" style={{ textAlign: "right" }}>
+            <h4>
+              <strong>Total Interest Paid Across All Banks:</strong> ₹
+              {totalInterest}
+            </h4>
+          </div>
         </Col>
       </Row>
     </Container>

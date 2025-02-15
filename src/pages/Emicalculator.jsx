@@ -12,7 +12,6 @@ const Emicalculator = () => {
   const [totalInterest, setTotalInterest] = useState(0); // Total interest paid
   const [amortizationSchedule, setAmortizationSchedule] = useState([]); // EMI breakdown
 
-  
   const formatNumber = (value) => {
     return parseFloat(value).toLocaleString("en-IN", {
       minimumFractionDigits: 2,
@@ -20,7 +19,6 @@ const Emicalculator = () => {
     });
   };
 
-  
   const calculateEmi = () => {
     const monthlyInterestRate = interestRate / 12 / 100;
     const emi =
@@ -141,6 +139,7 @@ const Emicalculator = () => {
         padding: "20px",
         borderRadius: "10px",
         minHeight: "100vh",
+        fontFamily: "'Roboto Mono', monospace", // Apply the font here
       }}
     >
       <h2
@@ -165,15 +164,6 @@ const Emicalculator = () => {
               marginTop: "50px",
             }}
           >
-            {/* Calculate EMI Button at the Top */}
-            {/* <Button
-              variant="primary"
-              type="submit"
-              style={{ marginBottom: "20px", width: "100%" }}
-            >
-              Calculate EMI
-            </Button> */}
-
             {/* Loan Amount */}
             <Form.Group controlId="loanAmount" className="mb-3">
               <Form.Label style={{ color: "#343a40", fontWeight: "500" }}>
@@ -184,6 +174,7 @@ const Emicalculator = () => {
                 value={loanAmount === 0 ? "" : loanAmount.toLocaleString("en-IN")}
                 onChange={handleLoanAmountChange}
                 required
+                style={{ fontFamily: "'Roboto Mono', monospace" }} // Apply font to input
               />
               <div style={{ marginTop: "5px", color: "#343a40", fontSize: "14px" }}>
                 <strong>Amount in Words:</strong> {numberToWords(loanAmount)}
@@ -200,15 +191,15 @@ const Emicalculator = () => {
                 value={tenure}
                 onChange={(e) => setTenure(parseInt(e.target.value))}
                 required
+                style={{ fontFamily: "'Roboto Mono', monospace" }} // Apply font to input
               />
             </Form.Group>
 
-            
+            {/* Interest Rate */}
             <Form.Group controlId="interestRate" className="mb-3">
               <Form.Label style={{ color: "#343a40", fontWeight: "500" }}>
                 Interest Rate ({interestRate.toFixed(2)}%)
               </Form.Label>
-              
               <Form.Range
                 min="0"
                 max="50"
@@ -216,7 +207,6 @@ const Emicalculator = () => {
                 value={interestRate}
                 onChange={(e) => setInterestRate(parseFloat(e.target.value))}
               />
-              
               <Form.Control
                 type="number"
                 min="0"
@@ -224,7 +214,7 @@ const Emicalculator = () => {
                 step="0.01"
                 value={interestRate}
                 onChange={(e) => setInterestRate(parseFloat(e.target.value))}
-                style={{ marginTop: "10px" }}
+                style={{ marginTop: "10px", fontFamily: "'Roboto Mono', monospace" }} // Apply font to input
               />
             </Form.Group>
           </Form>
@@ -298,7 +288,7 @@ const Emicalculator = () => {
                               e.target.value
                             )
                           }
-                          style={{ width: "100px" }}
+                          style={{ width: "100px", fontFamily: "'Roboto Mono', monospace" }} // Apply font to input
                         />
                       </td>
                       <td>{entry.remainingBalance}</td>
