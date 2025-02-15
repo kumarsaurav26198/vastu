@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import {
   BrowserRouter,
-  Route,
+  Route, //hehhegit 
   Routes,
   Navigate,
 } from "react-router-dom";
