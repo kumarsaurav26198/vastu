@@ -7,6 +7,8 @@ import certifiedVastu from "./asse/certifiedVastu.jpg";
 import growth from "./asse/growth.jpg";
 import vision from "./asse/vision.jpg";
 import mission from "./asse/mission.jpg";
+import aboutus from "../assets/clients/aboutus.jpg";
+
 
 function About() {
   return (
@@ -15,6 +17,34 @@ function About() {
         <Container fluid className="px-0 ">
           {/* About Us Section */}
           <Row className="mx-0 g-0" style={{ minHeight: "auto", marginTop: "70px" }}>
+
+            
+          <Col
+  className="p-0 d-flex justify-content-center align-items-center" // Flexbox for centering
+  style={{
+    flex: "0 0 100%", 
+    width: "100%", // Ensure it takes full width
+    minHeight: "30vh", // Reduced height
+    marginTop: "70px",
+    marginBottom: "70px",
+    overflow: "hidden", // Ensure the image doesn't overflow
+  }}
+>
+  <div className="mobile-width" style={{ width: "100%", height: "100%", textAlign: "center" }}>
+    <img 
+      src={aboutus} 
+      alt="About Us" 
+      style={{
+        width: "100%", // Fill the container width
+        height: "100%", // Fill the container height
+        objectFit: "cover", // Ensures it fills the area without distortion
+        borderRadius: "15px", // Rounded corners
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Optional: Adds a subtle shadow
+      }} 
+    />
+  </div>
+</Col>
+
             <Col
               xs={12}
               md={8}

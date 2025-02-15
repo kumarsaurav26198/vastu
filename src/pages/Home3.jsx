@@ -118,6 +118,7 @@ const Home3 = () => {
                     objectFit: "cover",
                     borderRadius: "10px",
                   }}
+                  className="carousel-imagehehe" 
                 />
               </Carousel.Item>
             ))}

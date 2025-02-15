@@ -11,7 +11,8 @@ const Home2 = () => {
         {/* Left Column - Carousel */}
         <Col
           md={6}
-          className="d-flex justify-content-center align-items-center order-1 order-md-2" // Reorder for mobile
+          xs={12} // Full width on mobile
+          className="d-flex justify-content-center align-items-center"
           style={{ padding: "20px" }}
         >
           <Carousel
@@ -36,6 +37,7 @@ const Home2 = () => {
                     objectFit: "cover",
                     borderRadius: "10px",
                   }}
+                  className="carousel-imagehehe" 
                 />
               </Carousel.Item>
             ))}
@@ -45,7 +47,8 @@ const Home2 = () => {
         {/* Right Column - Text Section */}
         <Col
           md={6}
-          className="d-flex flex-column justify-content-center order-2 order-md-1" // Reorder for mobile
+          xs={12} // Full width on mobile
+          className="d-flex flex-column justify-content-center"
           style={{ padding: "20px" }}
         >
           <h1 style={{ fontSize: "2.5rem", color: "black", marginBottom: "20px" }}>

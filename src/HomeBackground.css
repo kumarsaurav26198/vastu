@@ -20,3 +20,15 @@
   padding: 20px;
   border-radius: 10px;
 }
+
+/* Default styles for larger screens */
+.carousel-imagehehe {
+  margin-top: 350px;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 767.98px) {
+  .carousel-imagehehe {
+    margin-top: 20px;
+  }
+}

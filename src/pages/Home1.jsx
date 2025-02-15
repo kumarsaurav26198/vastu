@@ -112,7 +112,10 @@ const Home1 = () => {
                     height: "100%",
                     objectFit: "cover",
                     borderRadius: "10px",
+                    
                   }}
+                  className="carousel-imagehehe" 
+                   
                 />
               </Carousel.Item>
             ))}
