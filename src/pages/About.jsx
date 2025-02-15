@@ -20,30 +20,51 @@ function About() {
 
             
           <Col
-  className="p-0 d-flex justify-content-center align-items-center" // Flexbox for centering
+  className="p-0 d-flex justify-content-center align-items-center" 
   style={{
     flex: "0 0 100%", 
-    width: "100%", // Ensure it takes full width
-    minHeight: "30vh", // Reduced height
-    marginTop: "70px",
-    marginBottom: "70px",
-    overflow: "hidden", // Ensure the image doesn't overflow
+    width: "100%", 
+    minHeight: "30vh", 
+    marginTop: "50px",
+    marginBottom: "50px",
+    overflow: "hidden",
   }}
 >
-  <div className="mobile-width" style={{ width: "100%", height: "100%", textAlign: "center" }}>
+  <div 
+    className="mobile-width" 
+    style={{ 
+      width: "90%", // Slight margin on mobile 
+      height: "100%", 
+      textAlign: "center" 
+    }}
+  >
     <img 
       src={aboutus} 
       alt="About Us" 
       style={{
-        width: "100%", // Fill the container width
-        height: "100%", // Fill the container height
-        objectFit: "cover", // Ensures it fills the area without distortion
-        borderRadius: "15px", // Rounded corners
-        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Optional: Adds a subtle shadow
+        width: "100%", // Ensures full width 
+        height: "auto", // Adjusts height automatically for responsiveness
+        maxHeight: "40vh", // Prevents it from becoming too large
+        objectFit: "cover", 
+        borderRadius: "15px", 
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
       }} 
     />
   </div>
 </Col>
+
+<style>
+  {`
+    @media (max-width: 768px) {
+      .mobile-width img {
+        width: 90%;  /* Reduce width for better fit */
+        max-height: 30vh;  /* Prevents excessive height */
+        border-radius: 10px;  /* Slightly smaller rounding */
+      }
+    }
+  `}
+</style>
+
 
             <Col
               xs={12}
