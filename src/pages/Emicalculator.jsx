@@ -154,7 +154,7 @@ const Emicalculator = () => {
       </h2>
       <Row>
         {/* Left Side: Input Fields */}
-        <Col md={6} className="mb-4">
+        <Col md={3} className="mb-4">
           <Form
             onSubmit={handleSubmit}
             style={{
@@ -243,7 +243,7 @@ const Emicalculator = () => {
         </Col>
 
         {/* Right Side: Amortization Schedule */}
-        <Col md={6}>
+        <Col md={9}>
           <div
             style={{
               backgroundColor: "white",
@@ -264,12 +264,12 @@ const Emicalculator = () => {
               <Table striped bordered hover responsive>
                 <thead>
                   <tr>
-                    <th>Month</th>
-                    <th>Principal (₹)</th>
-                    <th>Interest (₹)</th>
-                    <th>Extra Payment (₹)</th>
-                    <th>Remaining Balance (₹)</th>
-                    <th>Total Payment-EMI (₹)</th>
+                    <th nuberofline={1}>Month</th>
+                    <th style={{ whiteSpace: "nowrap" }}>Principal(₹)</th>
+                    <th style={{ whiteSpace: "nowrap" }}>Interest(₹)</th>
+                    <th style={{ whiteSpace: "nowrap" }}>Extra Payment(₹)</th>
+                    <th style={{ whiteSpace: "nowrap" }}>Remaining Balance(₹)</th>
+                    <th style={{ whiteSpace: "nowrap" }}>Total Payment-EMI(₹)</th>
                   </tr>
                 </thead>
                 <tbody>
