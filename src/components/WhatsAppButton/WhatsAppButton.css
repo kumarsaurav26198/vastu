@@ -1,0 +1,38 @@
+/* src/components/WhatsAppButton.css */
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+.whatsapp-logo {
+  width: 77px; /* Default size */
+  height: 77px;
+  border-radius: 50%; /* Make it circular */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.whatsapp-logo:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+  filter: brightness(1.1); /* Slightly brighten the logo */
+}
+
+/* Optional: Add a pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.whatsapp-logo.pulse {
+  animation: pulse 1.5s infinite; /* Apply the pulse animation */
+}
