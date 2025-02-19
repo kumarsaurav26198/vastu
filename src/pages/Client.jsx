@@ -91,7 +91,7 @@ const Client = () => {
 
   return (
     <div style={{  backgroundColor: "#333" }}>
-          <Row className=" " style={{ minHeight: "100vh",}}>
+          <Row className=" " style={{ minHeight: "70vh",}}>
     <Container className="mt-5 mb-5" >
       <h1 className="text-center" style={{ fontSize: "2.3rem", color: "white", marginBottom: "20px" }}>
         What Our Clients Say
