@@ -90,8 +90,8 @@ const Client = () => {
   const groupedReviews = chunkArray(clientReviews, chunkSize);
 
   return (
-    <div style={{ minHeight: "60vh", backgroundColor: "#333" }}>
-          <Row className="align-items-center ">
+    <div style={{  backgroundColor: "#333" }}>
+          <Row className=" " style={{ minHeight: "100vh",}}>
     <Container className="mt-5 mb-5" >
       <h1 className="text-center" style={{ fontSize: "2.3rem", color: "white", marginBottom: "20px" }}>
         What Our Clients Say
