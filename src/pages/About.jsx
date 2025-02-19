@@ -33,7 +33,7 @@ function About() {
   <div 
     className="mobile-width" 
     style={{ 
-      width: "90%", // Slight margin on mobile 
+      width: "100%", // Full width (edge-to-edge)
       height: "100%", 
       textAlign: "center" 
     }}
@@ -42,7 +42,7 @@ function About() {
       src={aboutus} 
       alt="About Us" 
       style={{
-        width: "100%", // Ensures full width 
+        width: "100%", // Ensures full width
         height: "auto", // Adjusts height automatically for responsiveness
         maxHeight: "40vh", // Prevents it from becoming too large
         objectFit: "cover", 
@@ -57,14 +57,13 @@ function About() {
   {`
     @media (max-width: 768px) {
       .mobile-width img {
-        width: 90%;  /* Reduce width for better fit */
+        width: 100%;  /* Full width on mobile */
         max-height: 30vh;  /* Prevents excessive height */
         border-radius: 10px;  /* Slightly smaller rounding */
       }
     }
   `}
 </style>
-
 
             <Col
               xs={12}
