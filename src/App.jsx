@@ -20,7 +20,7 @@ import Emicalculator from "./pages/Emicalculator";
 import CompareEmi from "./pages/CompareEmi";
 import WhatsAppButton from "../src/components/WhatsAppButton/WhatsAppButton";
 import WelcomePopup from "./pages/welcomepop/WelcomePopup"; 
-import Fcontact from "./pages/welcomepop/Fcontact";
+
 
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -48,7 +48,7 @@ function App() {
           <Route path="/service" element={<Service />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/fcontact" element={<Fcontact />} />
+          
           <Route path="/homeloan" element={<Homeloan />} />
           <Route path="/vastu" element={<Vastu />} />
           <Route path="/stocks" element={<Stocks />} />

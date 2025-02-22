@@ -17,7 +17,7 @@ const WelcomePopup = () => {
   // Function to handle the "Contact Us" button click
   const handleContactUs = () => {
     handleClose(); // Close the popup
-    navigate("/contact"); // Navigate to the /contact route
+    navigate("/contact?fromPopup=true"); // Navigate to the /contact route with a query parameter
   };
 
   return (
