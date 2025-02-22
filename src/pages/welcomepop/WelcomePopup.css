@@ -1,0 +1,40 @@
+/* WelcomePopup.css */
+
+/* Slide-in animation */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Apply the animation to the modal */
+.slide-in-popup .modal-dialog {
+  animation: slideInFromRight 0.5s ease-out;
+  margin-right: 0; /* Ensure it aligns to the right */
+}
+
+/* Ensure the modal is positioned correctly */
+.modal {
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-end; /* Align to the right */
+}
+
+/* Modal dialog positioning */
+.modal-dialog {
+  margin: 0;
+  max-width: 500px; /* Adjust the width as needed */
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .modal-dialog {
+    max-width: 90%; /* Smaller width for mobile */
+  }
+}
