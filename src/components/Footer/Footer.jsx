@@ -1,16 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom"; // For routing
+import axios from "axios"; // Import Axios for API calls
 
 const Footer = () => {
+  const [totalVisitors, setTotalVisitors] = useState("Loading...");
+  const [todayVisitors, setTodayVisitors] = useState("Loading...");
+
+  // Fetch visitor data from Google Apps Script
+  useEffect(() => {
+    const fetchVisitorData = async () => {
+      try {
+        const response = await axios.get(
+          "https://script.google.com/macros/s/AKfycbwvmUygbSv1eFQCGkGENpPUXgEn141eLqyu-4ULx_cT9AYisIIw2W1tt_izgJSAXjVZLw/exec" // Replace with your Google Apps Script Web App URL
+        );
+        const { totalVisitors, todayVisitors } = response.data;
+        setTotalVisitors(totalVisitors);
+        setTodayVisitors(todayVisitors);
+      } catch (error) {
+        console.error("Error fetching visitor data:", error);
+        setTotalVisitors("Error");
+        setTodayVisitors("Error");
+      }
+    };
+
+    fetchVisitorData();
+  }, []);
+
   return (
     <footer
       style={{
-        backgroundColor: "#047478", 
+        backgroundColor: "#047478",
         padding: "40px 0",
         borderTop: "1px solid #e9ecef",
-        marginTop: "auto", 
-        color: "#fff", 
+        marginTop: "auto",
+        color: "#fff",
       }}
     >
       <Container>
@@ -26,17 +50,17 @@ const Footer = () => {
                   to="/"
                   style={{
                     textDecoration: "none",
-                    color: "#fff", 
+                    color: "#fff",
                     transition: "color 0.3s ease, text-decoration 0.3s ease",
-                    cursor: "pointer", 
+                    cursor: "pointer",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#ffcc00"; 
-                    e.currentTarget.style.textDecoration = "underline"; 
+                    e.currentTarget.style.color = "#ffcc00";
+                    e.currentTarget.style.textDecoration = "underline";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#fff"; 
-                    e.currentTarget.style.textDecoration = "none"; 
+                    e.currentTarget.style.color = "#fff";
+                    e.currentTarget.style.textDecoration = "none";
                   }}
                 >
                   Home
@@ -47,17 +71,17 @@ const Footer = () => {
                   to="/service"
                   style={{
                     textDecoration: "none",
-                    color: "#fff", 
+                    color: "#fff",
                     transition: "color 0.3s ease, text-decoration 0.3s ease",
-                    cursor: "pointer", 
+                    cursor: "pointer",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#ffcc00"; // Yellow color on hover
-                    e.currentTarget.style.textDecoration = "underline"; // Underline on hover
+                    e.currentTarget.style.color = "#ffcc00";
+                    e.currentTarget.style.textDecoration = "underline";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#fff"; // Reset color on leave
-                    e.currentTarget.style.textDecoration = "none"; // Remove underline on leave
+                    e.currentTarget.style.color = "#fff";
+                    e.currentTarget.style.textDecoration = "none";
                   }}
                 >
                   Service
@@ -68,17 +92,17 @@ const Footer = () => {
                   to="/about"
                   style={{
                     textDecoration: "none",
-                    color: "#fff", // White text color
+                    color: "#fff",
                     transition: "color 0.3s ease, text-decoration 0.3s ease",
-                    cursor: "pointer", // Change cursor to pointer
+                    cursor: "pointer",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#ffcc00"; // Yellow color on hover
-                    e.currentTarget.style.textDecoration = "underline"; // Underline on hover
+                    e.currentTarget.style.color = "#ffcc00";
+                    e.currentTarget.style.textDecoration = "underline";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#fff"; // Reset color on leave
-                    e.currentTarget.style.textDecoration = "none"; // Remove underline on leave
+                    e.currentTarget.style.color = "#fff";
+                    e.currentTarget.style.textDecoration = "none";
                   }}
                 >
                   About Us
@@ -89,17 +113,17 @@ const Footer = () => {
                   to="/contact"
                   style={{
                     textDecoration: "none",
-                    color: "#fff", // White text color
+                    color: "#fff",
                     transition: "color 0.3s ease, text-decoration 0.3s ease",
-                    cursor: "pointer", // Change cursor to pointer
+                    cursor: "pointer",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#ffcc00"; // Yellow color on hover
-                    e.currentTarget.style.textDecoration = "underline"; // Underline on hover
+                    e.currentTarget.style.color = "#ffcc00";
+                    e.currentTarget.style.textDecoration = "underline";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#fff"; // Reset color on leave
-                    e.currentTarget.style.textDecoration = "none"; // Remove underline on leave
+                    e.currentTarget.style.color = "#fff";
+                    e.currentTarget.style.textDecoration = "none";
                   }}
                 >
                   Contact Us
@@ -113,12 +137,11 @@ const Footer = () => {
             <h5 style={{ fontWeight: "bold", marginBottom: "20px" }}>
               Address
             </h5>
-            <p style={{ color: "#fff", marginBottom: "0" }}> {/* White text color */}
-           193,Sector 12 Dwarka,
+            <p style={{ color: "#fff", marginBottom: "0" }}>
+              193, Sector 12 Dwarka,
               <br />
-              New Delhi,South West Delhi-110078
+              New Delhi, South West Delhi - 110078
               <br />
-          
             </p>
           </Col>
 
@@ -127,33 +150,35 @@ const Footer = () => {
             <h5 style={{ fontWeight: "bold", marginBottom: "20px" }}>
               Contact
             </h5>
-            <p style={{ color: "#fff", marginBottom: "0" }}> {/* White text color */}
-              {/* Phone: 9878987 */}
-              <br />
+            <p style={{ color: "#fff", marginBottom: "0" }}>
               Email: vstrc07@gmail.com
+              <br />
+              Total Visitors: {totalVisitors}
+              <br />
+              Today's Visitors: {todayVisitors}
             </p>
           </Col>
         </Row>
 
         {/* Copyright */}
         <Row>
-  <Col className="text-center mt-4">
-    <p style={{ color: "#fff", marginBottom: "0" }}> {/* White text color */}
-      &copy; {new Date().getFullYear()} VSTRC. All Rights Reserved.
-    </p>
-    <p style={{ color: "#fff", marginBottom: "0" }}>
-      Developed by{" "}
-      <a
-        href="https://arvmultimedia.com/"
-        target="_blank" // Opens the link in a new tab
-        rel="noopener noreferrer" // Security best practice for external links
-        style={{ color: "#fff", textDecoration: "underline" }} // Optional: Add styling
-      >
-        ARV MULTIMEDIA
-      </a>
-    </p>
-  </Col>
-</Row>
+          <Col className="text-center mt-4">
+            <p style={{ color: "#fff", marginBottom: "0" }}>
+              &copy; {new Date().getFullYear()} VSTRC. All Rights Reserved.
+            </p>
+            <p style={{ color: "#fff", marginBottom: "0" }}>
+              Developed by{" "}
+              <a
+                href="https://arvmultimedia.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "#fff", textDecoration: "underline" }}
+              >
+                ARV MULTIMEDIA
+              </a>
+            </p>
+          </Col>
+        </Row>
       </Container>
     </footer>
   );
